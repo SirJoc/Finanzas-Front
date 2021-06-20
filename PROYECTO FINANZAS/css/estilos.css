@@ -1,0 +1,781 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: 'Montserrat Alternates', sans-serif;
+	}
+	body{
+		background: url(https://www.xtrafondos.com/wallpapers/montanas-con-nieve-en-el-bosque-3934.jpg);
+		background-size: 100vw 100vh;
+		background-repeat: no-repeat;
+	}
+	.capa{
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		background: rgba(0,0,0,0.6);
+		z-index: -1;
+		top: 0;left: 0;
+	}
+	/*Estilos para el encabezado*/
+	.header{
+		width: 100%;
+		height: 100px;
+		position: fixed;
+		top: 0;left: 0;
+	}
+	.container{
+		width: 90%;
+		max-width: 1200px;
+		margin: auto;
+	}
+	.container .btn-menu, .logo{
+		float: left;
+		line-height:100px;
+	}
+	.container .btn-menu label{
+		color: #fff;
+		font-size: 25px;
+		cursor: pointer;
+	}
+	.logo h1{
+		color: #fff;
+		font-weight: 400;
+		font-size: 22px;
+		margin-left: 10px;
+	}
+	.container .menu{
+		float: right;
+		line-height: 100px;
+	}
+	.container .menu a{
+		display: inline-block;
+		padding: 15px;
+		line-height: normal;
+		text-decoration: none;
+		color: #fff;
+		transition: all 0.3s ease;
+		border-bottom: 2px solid transparent;
+		font-size: 15px;
+		margin-right: 5px;
+	}
+	.container .menu a:hover{
+		border-bottom: 2px solid #c7c7c7;
+		padding-bottom: 5px;
+	}
+	/*Fin de Estilos para el encabezado*/
+
+	/*Menù lateral*/
+	#btn-menu{
+		display: none;
+	}
+	.container-menu{
+		position: absolute;
+		background: rgba(0,0,0,0.5);
+		width: 100%;
+		height: 100vh;
+		top: 0;left: 0;
+		transition: all 500ms ease;
+		opacity: 0;
+		visibility: hidden;
+	}
+	#btn-menu:checked ~ .container-menu{
+		opacity: 1;
+		visibility: visible;
+	}
+	.cont-menu{
+		width: 100%;
+		max-width: 250px;
+		background: #1c1c1c;
+		height: 100vh;
+		position: relative;
+		transition: all 500ms ease;
+		transform: translateX(-100%);
+	}
+	#btn-menu:checked ~ .container-menu .cont-menu{
+		transform: translateX(0%);
+	}
+	.cont-menu nav{
+		transform: translateY(15%);
+	}
+	.cont-menu nav a{
+		display: block;
+		text-decoration: none;
+		padding: 20px;
+		color: #c7c7c7;
+		border-left: 5px solid transparent;
+		transition: all 400ms ease;
+	}
+	.cont-menu nav a:hover{
+		border-left: 5px solid #c7c7c7;
+		background: #1f1f1f;
+	}
+	.cont-menu label{
+		position: absolute;
+		right: 5px;
+		top: 10px;
+		color: #fff;
+		cursor: pointer;
+		font-size: 18px;
+	}
+	/*Fin de Menù lateral*/
+
+	#salir{
+		float: right;
+		display: block;
+		margin-top: 34px;
+	}
+
+
+
+	
+
+
+	/*buscador*/
+	
+
+	body{
+		font-family: 'PT Sans', sans-serif;
+	}
+
+	.buscar{
+		position: absolute;
+		padding: 5px;
+	}
+
+	.buscar input{
+		width:  700px;
+		height: 40px;
+		padding: 0 20px;
+		font-size: 18px;
+		color: #000;
+		outline: none;
+		border: 1px solid silver;
+		border-radius: 30px;
+	}
+
+	.btn{
+		width: 55px;
+		height: 55px;
+		line-height: 55px;
+		background: #440080;
+		top: 0;
+
+		right: 0;
+		position: absolute;
+		text-align: center;
+		color:white;
+		font-size: 20px;
+		border-radius: 50%;
+		cursor: pointer;
+	}
+
+	.buscar{
+		margin-left: 603px;
+		margin-top: -45px;
+	}
+
+
+	.botoncito{
+
+		margin-top: 41px;
+		margin-left: 860px;
+		position: absolute;
+
+
+
+
+
+	}
+
+	.botonsaso{
+		
+		background-color: #4CAF50; 
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		border-radius: 52px;
+		cursor: pointer;
+
+	
+
+		
+
+	}
+
+
+	.botonsaso:hover{
+		background-color: #0F362D;
+	}
+
+
+
+	#mapasa{
+		margin-top: 150px;
+		margin-left: 590px;
+	}
+
+
+	#titulo1{
+		margin-top: 38px;
+	}
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*tabla*/
+
+
+#tablita{
+	margin: 150px auto;
+	width: 600px;
+	padding-top: 130px;
+	margin-left: 480px;
+	
+}
+
+table{
+	background-color: white;
+	text-align: left;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td{
+	padding: 20px;
+}
+
+thead{
+	background-color: #246355;
+	border-bottom: solid 5px #0F362D;
+	color: white;
+}
+
+tr:nth-child(even){
+	background-color: #ddd;
+}
+
+tr:hover td{
+	background-color: #369681;
+	color: white;
+}
+
+
+
+
+
+
+
+
+
+
+/*arreglar floats*/
+
+.clearfix {
+	clear: both;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*popup*/
+
+.contenedor {
+	width: 90%;
+	max-width: 1000px;
+	margin: 20px auto;
+}
+
+.contenedor article {
+	line-height: 28px;
+}
+
+.contenedor article h1 {
+	font-size: 30px;
+	text-align: left;
+	padding: 50px 0;
+}
+
+.contenedor article p {
+	margin-bottom: 20px;
+}
+
+
+
+
+
+/* ------------------------- */
+/* POPUP */
+/* ------------------------- */
+
+.overlay {
+	background: rgba(0,0,0,.3);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	visibility: hidden;
+}
+
+.overlay.active {
+	visibility: visible;
+}
+
+.popup {
+	background: #F8F8F8;
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+	border-radius: 3px;
+	font-family: 'Montserrat', sans-serif;
+	padding: 20px;
+	text-align: center;
+	width: 600px;
+	
+	transition: .3s ease all;
+	transform: scale(0.7);
+	opacity: 0;
+}
+
+.popup .btn-cerrar-popup {
+	font-size: 16px;
+	line-height: 16px;
+	display: block;
+	text-align: right;
+	transition: .3s ease all;
+	color: #BBBBBB;
+}
+
+.popup .btn-cerrar-popup:hover {
+	color: #000;
+}
+
+.popup h3 {
+	font-size: 36px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	opacity: 0;
+}
+
+.popup h4 {
+	font-size: 26px;
+	font-weight: 300;
+	margin-bottom: 40px;
+	opacity: 0;
+}
+
+.popup form .contenedor-inputs {
+	opacity: 0;
+}
+
+.popup form .contenedor-inputs input {
+	width: 100%;
+	margin-bottom: 20px;
+	height: 52px;
+	font-size: 18px;
+	line-height: 52px;
+	text-align: center;
+	border: 1px solid #BBBBBB;
+}
+
+.popup form .btn-submit {
+	padding: 0 20px;
+	height: 40px;
+	line-height: 40px;
+	border: none;
+	color: #fff;
+	background: #5E7DE3;
+	border-radius: 3px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	cursor: pointer;
+	transition: .3s ease all;
+}
+
+.popup form .btn-submit:hover {
+	background: rgba(94,125,227, .9);
+}
+
+/* ------------------------- */
+/* ANIMACIONES */
+/* ------------------------- */
+.popup.active {	transform: scale(1); opacity: 1; }
+.popup.active h3 { animation: entradaTitulo .8s ease .5s forwards; }
+.popup.active h4 { animation: entradaSubtitulo .8s ease .5s forwards; }
+.popup.active .contenedor-inputs { animation: entradaInputs 1s linear 1s forwards; }
+
+@keyframes entradaTitulo {
+	from {
+		opacity: 0;
+		transform: translateY(-25px);
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes entradaSubtitulo {
+	from {
+		opacity: 0;
+		transform: translateY(25px);
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes entradaInputs {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+
+
+#parteizquierda{
+	width: 46%;
+	float: left;
+	padding-left: 15px;
+
+}
+
+
+#partederecha{
+	float: right;
+	width: 46%;
+	padding-right: 15px;
+}
+
+#aea{
+	width: 45%;
+	float: left;
+	display: block;
+}
+
+
+
+#fechaemision{
+	width: 83%;
+	float: left;
+}
+
+#fechadescuento{
+	width: 83%;
+	float: left;
+}
+
+
+#fechapago{
+	width: 83%;
+	float: left;
+}
+
+
+
+
+.imagen1{
+	width: 30px;
+	height: 30px;
+	margin-top: 11px;
+}
+
+
+.aea2{
+	
+	display: block;
+
+}
+
+#aea3{
+	width: 48%;
+	float: right;
+	display: block;
+}
+
+
+select{
+	box-shadow: 0 10px 25px rgba(0, 0, 0,0.2);
+	font-size: 15px;
+	padding: 1em 0.3em;
+	background: #4d5061;
+	color: white;
+	border: 0;
+}
+
+
+#agregar{
+	background: springgreen;
+	width: 243px;
+	
+}
+
+#cancelar{
+	background: tomato;
+	width: 243px;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Descuento*/
+
+#cuerpo{
+	display: block;
+	width: 60%;
+	margin: 0px auto;
+	margin-top: 100px;
+	color: white;
+	
+}
+
+#parteSuperior{
+	display: block;
+	float: left;
+	width: 100%;
+
+
+}
+
+.superior{
+	width: 30%;
+	background-color: rgba(122, 205, 39,0.7);
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	border-radius: 52px;
+	cursor: pointer;
+	
+
+}
+
+.superior:hover{
+	background-color: #0F362D;
+}
+
+
+#buton1{
+	margin-left: 90px;
+}
+
+#buton2{
+	margin-left: 90px;
+}
+
+.monedon{
+	float: left;
+	display: block;
+	background-color: rgba(122, 205, 39,0.7);
+	width: 20%;
+	border-radius: 52px;
+	padding: 5px 15px;
+	color: white;
+	font-size: 20px;
+	margin-left: 20px;
+}
+
+
+
+
+#cuerpoizquierdo{
+	display: block;
+	float: left;
+	width: 50%;
+	background-color: rgba(15, 157, 15,0.8);
+	margin-top: 15px;
+	padding-top: 15px;
+	border-radius: 30px 0px 0px 0px;
+
+}
+
+#cuerpoderecho{
+	display: block;
+	float: right;
+	width: 50%;
+	background-color: rgba(15, 157, 15,0.8);
+	margin-top: 15px;
+	padding-top: 15px;
+	border-radius: 0px 30px 0px 0px;
+
+}
+
+
+#central{
+	display: block;
+	float: left;
+	width: 100%;
+	background-color: rgba(15, 157, 15,0.8);
+	border-radius: 0px 0px 30px 30px;
+}
+
+
+
+
+
+
+.buton{
+	display: block;
+	width: 50%;
+	float: left;
+
+
+}
+
+#dias{
+	padding-right: 70px;
+	padding-left: 10px;
+	margin-left: 55px;
+	border-radius: 30px;
+}
+
+#monedanacional{
+	padding-right: 15px;
+	padding-left: 10px;
+
+	border-radius: 30px;
+}
+
+.clasesita{
+	padding-bottom: 15px;
+}
+
+.ba{
+	display: block;
+	width: 50%;
+	float: left;
+	padding-left: 35px;
+	padding-top: 15px;
+}
+
+#ba{
+	display: block;
+	width: 100%;
+	float: left;
+	padding-left: 37%;
+	margin-bottom: 15px;
+	text-decoration: underline white;
+}
+
+#ba2{
+	display: block;
+	width: 100%;
+	float: left;
+	padding-left: 33%;
+	margin-bottom: 15px;
+	text-decoration: underline white;
+
+}
+
+
+#ba3{
+	display: block;
+	width: 100%;
+	float: left;
+	padding-left: 45%;
+	margin-bottom: 15px;
+	text-decoration: underline white;
+}
+
+#izquierda{
+	float: left;
+	display: block;
+	width: 50%;
+}
+
+
+#derecha{
+	float: right;
+	display: block;
+	width: 50%;
+}
+
+
+/*estilos para el boton*/
+
+  .form__input {
+	font-family: 'Roboto', sans-serif;
+	color: #333;
+	font-size: 1.2rem;
+	margin: 0 auto;
+	padding: 12px;
+	border-radius: 25px;
+	background-color: rgb(255, 255, 255);
+	border: none;
+	width: 30%;
+	display: block;
+	border-bottom: 0.3rem solid transparent;
+	transition: all 0.3s;
+  }
+  
+  
+input{
+	outline: none;
+}
+
+
+select{
+	outline: none;
+}

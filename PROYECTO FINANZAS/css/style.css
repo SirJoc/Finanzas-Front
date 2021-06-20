@@ -1,0 +1,555 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+
+
+
+html {
+    height: 100%
+}
+
+
+/*Fuentes*/
+
+@font-face{
+    font-family: "TrebuchetMS";
+    src: url("fonts/TrebuchetMS.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+@font-face{
+    font-family: "BebasNeue";
+    src: url("fonts/BebasNeue.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+@font-face{
+    font-family: "WebSymbolsRegular";
+    src: url("fonts/websymbols-regular-webfont.eot");
+
+    /*compatibilidad con TODOS LOS NAVEGADORES*/
+    src: url("fonts/websymbols-regular-webfont.eot?#iefix")
+    format("embedded-opentype"),
+    url("fonts/websymbols-regular-webfont.woff")
+    format("woff"),
+    url("fonts/websymbols-regular-webfont.ttf")
+    format("truetype"),
+    url("fonts/websymbols-regular-webfont.svg#WebSymbolsRegular")
+    format("svg");   
+    
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/*Generales*/
+
+/*poniendo iconos*/
+.gear, .icon{
+    font-family: "WebSymbolsRegular";
+}
+
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.wrap{
+    width: 1200px;
+    /*centrar elementos en css*/
+    margin: 0px auto;
+}
+
+
+/*Estilos a la cabecera*/
+
+#logo2{
+    
+   width: 18%;
+   
+   display: block;
+   float: left;
+   
+
+   
+}
+
+#imagen{
+    padding-left: 10%;
+ 
+}
+
+
+#header{
+  width: 100%;
+  height: 230px;
+  background-color: rgba(236, 236, 236, 0.5);
+  color: white;
+  text-decoration: none;
+  font-family: "BebasNeue";
+
+}
+
+
+/*banner*/
+#banner{
+  
+    margin-top: 54px;
+    width: 75%;
+    height: 120px;
+    background: url(../img/pxgray.png);
+    border: 10px solid white;
+    box-shadow: 1px 1px 10px gray;
+    
+   
+    display: block;
+    float: left;
+}
+
+
+
+#banner h1{
+    color: white;
+    text-align: center;
+    font-size: 53px;
+    font-family:"BebasNeue" ;
+    letter-spacing: 1px;
+    word-spacing: 5px;  
+    display: block;  
+    margin: 25px auto;
+    text-shadow: 2px 2px 1px black;
+    font-weight: normal;
+   
+
+}
+
+
+
+
+
+
+
+#lateral{
+    
+    /*apartir de los 1200px se va expandiendo*/
+    font-family: "TrebuchetMS";
+    
+    
+
+}
+
+
+aside h3{
+    display: block;
+    width: 266px;
+    line-height: 45px;
+
+
+    /*colocamos el color white porque  las imagenes son poqueñitas y se 
+    repiten el blanco es para hacer blanco esos espacios*/
+    background: url("../img/pxgray.png");
+
+
+    /*sombra 3d*/
+  
+    
+ 
+    
+    font-weight: normal;
+   
+    color: white;
+
+
+
+ 
+    text-align: center;
+    font-size: 43px;
+    font-family:"BebasNeue" ;
+    letter-spacing: 1px;
+    word-spacing: 5px;  
+    display: block;  
+    margin: 25px auto;
+    text-shadow: 2px 2px 1px black;
+    font-weight: normal;
+    padding-top: 6px;
+
+
+
+   
+    
+    border: 10px solid white;
+    box-shadow: 1px 1px 10px gray;
+    
+
+
+
+
+
+}
+
+
+#titulaso{
+    padding-top: 15px;
+    padding-left: 62px;
+    
+}
+
+
+#titulaso2{
+    
+    padding-left: 105px;
+    
+   
+}
+
+u{
+    color: white;
+}
+
+
+#grandesito{
+    width: 100%;
+    
+}
+
+
+
+
+
+
+
+
+#lateral input[type="text"]{
+    width: 85%;
+    height: 30px;
+    border: none;
+    padding-left: 5px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #ccc;
+}
+
+
+
+/*codigo para quitar el foco de los inputs*/
+
+input:focus, input.form-control:focus {
+
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+
+#lateral input[type="button"],
+#lateral input[type="submit"]{
+    height: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    border-left: 1px solid #ccc;
+    color: #555;
+    padding-left: 7px;
+}
+
+
+
+
+#lateral input[type="text"]:focus{
+    
+    color: #555;
+    transition: all 300ms;
+}
+
+
+
+
+
+
+
+.aside-box{
+    width: 16%;
+    height: 240px;
+    margin-left: 42%;
+    margin-top: 20px;
+    margin-right: 29px;
+    padding-top: 2px;
+    background: white;
+    /*para hacer la caja tipo 3D*/
+    box-shadow: 0px 0px 1px rgba(0,0,0,0.3),
+    0px 3px 7px rgba(0,0,0,0.3),
+    0px 1px white inset,
+    0px -3px 2px rgba(0,0,0,0.3) inset;
+}
+
+
+
+#login input[type="email"],
+#login input[type="password"]{
+    display: block;
+    margin: 0px auto;
+    width: 82%;
+    height: 30px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #ccc inset;
+    border-radius: 5px;
+    color: #ccc;
+    margin-top: 20px;
+    padding-left: 30px;
+
+
+}
+
+
+
+#login input[type="email"]:focus,
+#login input[type="password"]:focus{
+    color:black;
+    box-shadow: 1px 1px 1px grey;
+    transition: all 300ms;    
+}
+
+
+#login #user{
+    text-align: center;
+    display: block;
+    position: absolute;
+    margin-left: 15px;
+    margin-top: 6px;
+    height: 30px;
+
+}
+
+
+#login #password{
+    text-align: center;
+    display: block;
+    position: absolute;
+    margin-left: 18px;
+    margin-top: 24px;
+    height: 30px;
+    font-size: 20px;
+
+}
+
+
+
+#login input[type="submit"],
+#login button{
+    display: block;
+    text-align: center;
+    width: 89%;
+    height: 35px;
+    margin-top: 20px;
+    color:white;
+    /*hacer una gradiente*/
+    background: linear-gradient(to bottom, #3eb8e5 0%, #2ca0ca 100%);
+    border: 1px solid #156785;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: "TrebuchetMS";
+    font-weight: lighter;
+    float: left;
+    margin-left: 17px;
+    margin-bottom: 20px;
+    
+}
+
+
+#link1{
+    padding-left: 36%;
+}
+
+
+#link2{
+    padding-left: 13%;
+}
+
+
+
+
+
+
+
+#login input[type="submit"]:hover,
+#login input[type="button"]:hover,
+#login input[type="reset"]:hover,
+#login button:hover{
+    box-shadow: 0px 0px 3px gray;
+    transition: all 300ms;
+}
+
+
+
+#login a{
+    display: block;
+    
+    text-decoration: none;
+     float: left;
+    
+    font-size: 14px;
+    color: #555;
+
+    text-align: center;
+   
+}
+
+
+
+#login a:hover{
+    display: block;
+    
+    text-decoration: underline;
+   
+    text-align: center;
+    font-size: 14px;
+    color: #2f45bc;
+
+    
+   
+}
+
+
+
+
+
+
+
+.aside-box:hover .Nombres1{
+    transform: translateX(0%);
+    transition: all 200ms;
+    opacity: 1;
+}
+
+
+
+.aside-box:hover .Nombres2{
+    transform: translateX(0%);
+    transition: all 300ms;
+    opacity: 1;
+}
+
+
+.aside-box:hover .Nombres3{
+    transform: translateX(0%);
+    transition: all 400ms;
+    opacity: 1;
+}
+
+
+
+
+
+.clearfix{
+    float: none;
+    clear: both;
+}
+
+
+
+
+/*codigooooooooooooooooooooooooooooooooooo nuevo*/
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+background: url(https://www.xtrafondos.com/wallpapers/montanas-con-nieve-en-el-bosque-3934.jpg);
+
+
+background-size: cover;
+background-repeat: no-repeat;
+height: 78%;
+font-family: 'Numans', sans-serif;
+background-size: 100% 100%;
+background-attachment: fixed;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: 370px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #FFC312;
+}
+
+.social_icon span:hover{
+color: white;
+cursor: pointer;
+}
+
+.card-header h3{
+color: white;
+}
+
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
+}
+
+.input-group-prepend span{
+width: 50px;
+background-color: #FFC312;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}

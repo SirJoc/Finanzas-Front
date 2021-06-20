@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Finanzas</title>
+	<link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+	<header class="header">
+		<div class="container">
+			<div class="btn-menu">
+				<label for="btn-menu">☰</label>
+			</div>
+			<div class="logo">
+				<h1>Librar&+</h1>
+			</div>
+			<nav class="menu">
+				<a href="Letras.html">Inicio</a>
+				<a href="Encuentranos.html">Encuentranos</a>
+				<a href="index.html">Cerrar Sesion</a>
+
+				<img id="salir" src="img/salir.png">
+
+
+			</nav>
+		</div>
+	</header>
+	<div class="capa"></div>
+	<!--	--------------->
+	<input type="checkbox" id="btn-menu">
+	<div class="container-menu">
+		<div class="cont-menu">
+			<nav>
+				<a href="Letras.html">Letras</a>
+				<a href="MiPerfil.html">Mi Perfil</a>
+
+			</nav>
+			<label for="btn-menu">✖️</label>
+		</div>
+	</div>
+
+	<div id="cuerpo">
+
+		<div id="parteSuperior">
+			<button id="buton1" class="superior">TASA EFECTIVA</button>
+			<button id="buton2" class="superior">TASA NOMINAL</button>
+
+			<div class="monedon">
+				
+					MONEDA
+					<select id="monedanacional" name="tipoDeMoneda">
+						<option value="0">Sol</option>
+						<option value="1">Dolar</option>
+						<option value="2">Euro</option>
+					</select>
+	
+				
+			</div>
+		
+
+
+		</div>
+
+		<div class="clearfix"></div>
+
+
+		<div id="cuerpoizquierdo">
+			<u>
+				<h2>
+					<b id="ba">DATOS DE LETRA</b>
+				</h2>
+			</u>
+
+
+			<div class="clasesita">
+				<b class="ba">Fecha de Giro</b>
+				<input class="form__input" class="buton" type="text" placeholder="12/03/2020">
+			</div>
+
+			<div class="clasesita">
+
+				<b class="ba">Fecha de Vencimiento</b>
+				<input class="form__input" class="buton" type="text" placeholder="12/03/2022">
+			</div>
+
+			<div class="clasesita">
+				<b class="ba">Valor Nominal</b>
+				<input class="form__input" class="buton" type="text" placeholder="1500">
+			</div>
+
+
+			<div class="clasesita">
+
+				<b class="ba">Retencion</b>
+				<input class="form__input" class="buton" type="text" placeholder="0">
+			</div>
+
+
+
+
+
+
+
+
+		</div>
+
+		<div id="cuerpoderecho">
+			<u><h2><b id="ba2">TAZA Y PLAZO</b></h2></u>
+
+			<div class="clasesita">
+				<b class="ba">Dias por año</b>
+				<select id="dias" name="diasporaño">
+					<option value="0">360 dias</option>
+					<option value="1">365 dias</option>
+				</select>
+			</div>
+
+
+			<div class="clasesita">
+				<b class="ba">Plazo de tasa</b>
+				<input class="form__input" class="buton" type="text" placeholder="Anual">
+			</div>
+
+
+			<div class="clasesita">
+				<b class="ba">Tasa Efectiva</b>
+				<input class="form__input" class="buton" type="text" placeholder="12%">
+			</div>
+
+
+
+			<div class="clasesita">
+				<b class="ba">Fecha de Descuento</b>
+				<input class="form__input" class="buton" type="text" placeholder="13/05/2021">
+			</div>
+
+
+
+
+
+
+		</div>
+
+
+		<div class="clearfix"></div>
+
+		<div id="central">
+			<u><h2><b id="ba3">RESULTADOS</b></h2></u>
+
+			<div id="izquierda">
+
+
+				<div class="clasesita">
+					<b class="ba">Tasa Efectiva Anual (Sin Costes)</b>
+					<input class="form__input" class="buton" type="text" placeholder="01/05/2021">
+				</div>
+
+				<div class="clasesita">
+					<b class="ba">Numero De Dias Transcurridos</b>
+					<input class="form__input" class="buton" type="text" placeholder="94">
+				</div>
+
+				<div class="clasesita">
+					<b class="ba">Tasa Efectiva a 94 Dias</b>
+					<input class="form__input" class="buton" type="text" placeholder="3.003355%">
+				</div>
+
+
+				<div class="clasesita">
+					<b class="ba">Tasa Descontada a 94 Dias</b>
+					<input class="form__input" class="buton" type="text" placeholder="2.9157841%">
+				</div>
+
+
+				<div class="clasesita">
+					<b class="ba">Descuento Por 94 Dias</b>
+					<input class="form__input" class="buton" type="text" placeholder="43.74">
+				</div>
+
+
+
+				<div class="clasesita">
+
+					<b class="ba">Retencion</b>
+					<input class="form__input" class="buton" type="text" placeholder="0.00">
+				</div>
+
+
+
+
+
+
+
+			</div>
+
+
+			<div id="derecha">
+
+
+				<div class="clasesita">
+					<b class="ba">Costes Iniciales Totales</b>
+					<input class="form__input" class="buton" type="text" placeholder="0.00">
+				</div>
+
+				<div class="clasesita">
+					<b class="ba">Valor Neto</b>
+					<input class="form__input" class="buton" type="text" placeholder="1,456.26">
+				</div>
+
+				<div class="clasesita">
+					<b class="ba">Valor Total A recibir</b>
+					<input class="form__input" class="buton" type="text" placeholder="1,456.26">
+				</div>
+
+				<div class="clasesita">
+					<b class="ba">Costes Finales Totales</b>
+					<input class="form__input" class="buton" type="text" placeholder="0.00">
+				</div>
+
+
+				<div class="clasesita">
+					<b class="ba">Valor Total a Entregar</b>
+					<input class="form__input" class="buton" type="text" placeholder="1,500.00">
+				</div>
+
+
+				<div class="clasesita">
+
+					<b class="ba">Tasa De Coste Efectiva Anual</b>
+					<input class="form__input" class="buton" type="text" placeholder="12.009515%">
+				</div>
+
+
+
+
+
+
+
+
+			</div>
+
+
+
+
+		</div>
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+</body>
+
+</html>
