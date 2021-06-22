@@ -1,0 +1,80 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "Josias",
+      "password": "password"
+    },
+    {
+      "id": 2,
+      "username": "Renzo",
+      "password": "password"
+    }
+  ],
+
+  "letras": [
+    {
+      "id": 1,
+      "cliente": "Boda Anita",
+      "f_inicial": "05-12-20",
+      "f_final": "05-12-26",
+      "f_descuento": "25-12-23",
+      "v_nominal": 1123,
+      "tipoTasa": "Anual",
+      "tasa": 0.03,
+      "retenciones": 112,
+      "d": 0.029421,
+      "descuento": 42,
+      "comentarios": ""
+    },
+    {
+      "id": 2,
+      "cliente": "Libreria Clara",
+      "f_inicial": "05-10-20",
+      "f_final": "05-12-26",
+      "f_descuento": "25-12-23",
+      "v_nominal": 1200,
+      "tipoTasa": "Anual",
+      "tasa": 0.05,
+      "retenciones": 600,
+      "d": 0.029421,
+      "descuento": 32,
+      "comentarios": ""
+    },
+    {
+      "id": 3,
+      "cliente": "Boda Anita",
+      "f_inicial": "05-11-20",
+      "f_final": "05-12-26",
+      "f_descuento": "25-12-23",
+      "v_nominal": 1049.90,
+      "tipoTasa": "Anual",
+      "tasa": 0.06,
+      "retenciones": 104,
+      "d": 0.029421,
+      "descuento": 12,
+      "comentarios": ""
+    }
+  ],
+
+  "students": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "age": 25,
+      "address": "The Next Location."
+    },
+    {
+      "id": 2,
+      "name": "Jason Bourne",
+      "age": 25,
+      "address": "Unknown"
+    },
+    {
+      "id": 3,
+      "name": "William Norton",
+      "age": 30,
+      "address": "One Place"
+    }
+  ]
+}

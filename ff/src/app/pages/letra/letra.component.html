@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ isEditMode ? 'Edit Student' : 'Add Student' }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (submit)="onSubmit()" #studentForm="ngForm">
+      <p>
+        <mat-form-field>
+          <mat-label>Student Name</mat-label>
+          <input matInput placeholder="Name" name="name" required [(ngModel)]="studentData.name">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Age</mat-label>
+          <input matInput placeholder="Age" name="age" type="number" required [(ngModel)]="studentData.age">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput placeholder="Address" name="address" required [(ngModel)]="studentData.address">
+        </mat-form-field>
+      </p>
+      <p>
+        <ng-container>
+          <button mat-button class="mat-button-text" color="primary">{{ isEditMode ? 'Update' : 'Add'}}</button>
+          <a mat-button class="mat-button-text" color="warn" (click)="cancelEdit()">Cancel</a>
+        </ng-container>
+      </p>
+    </form>
+  </mat-card-content>
+</mat-card>
