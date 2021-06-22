@@ -1,0 +1,24 @@
+.login-card {
+  width: 355px;
+  margin-top: 25px;
+  border-radius: 15px;
+}
+
+.background-card {
+  background-image: url("src/assets/bosque.jpg");
+  background-size: 100% 100%;
+  border-radius: 0px;
+  min-height: 100vh;
+}
+
+.logo, #contenedor {
+  width: 100%;
+  text-align: center;
+}
+
+.img {
+  max-width: 100%;
+  width: 0px;
+}
+
+

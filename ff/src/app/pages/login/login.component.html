@@ -1,1 +1,57 @@
-<p>login works!</p>
+<mat-card class="background-card">
+  <div>
+      <div class="logo" id="contenedor">
+        <img src="assets/lapizito.png" alt="imagen"/>
+      </div>
+    <div  align="center">
+      <head>
+        <meta charset="UTF-8">
+        <title>Finanzas</title>
+        <meta name="viewport" content="width=device-width,
+    user-scalable=no">
+        <link rel="icon" type="favicon/x-icon" href="assets/dinero.png" />
+
+      </head>
+
+
+      <!--inicio de cabecera-->
+
+      <!--fin de cabecera-->
+      <mat-card class="login-card">
+        <h3 style="font-size: 30px"> <strong>¡Te Extrañabamos!</strong></h3>
+
+        <mat-card-content style="opacity: 1500%">
+          <p>
+            <mat-form-field appearance="outline" style="background-color: white">
+              <mat-label>Usuario</mat-label>
+              <input matInput placeholder="Usuario" class="form-control" [(ngModel)]="userData.id">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Contraseña</mat-label>
+              <input matInput placeholder="Contraseña" type="password" required [(ngModel)]="userData.password">
+            </mat-form-field>
+          </p>
+
+          <button mat-raised-button color="primary">
+            Login
+          </button>
+
+          <div class="card-footer">
+            <div class="d-flex justify-content-center links">
+              ¿No tienes una cuenta?<a >Registrate</a>
+            </div>
+            <div class="d-flex justify-content-center">
+              <a >¿Olvidaste la contraseña?</a>
+            </div>
+          </div>
+        </mat-card-content>
+
+      </mat-card>
+
+
+    </div>
+  </div>
+
+</mat-card>
