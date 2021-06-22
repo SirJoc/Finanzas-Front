@@ -35,21 +35,46 @@
     </mat-grid-list>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> #Id </th>
+        <th mat-header-cell *matHeaderCellDef> Id </th>
         <td mat-cell *matCellDef="let element"> {{ element.id }}</td>
       </ng-container>
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
+      <ng-container matColumnDef="cliente">
+        <th mat-header-cell *matHeaderCellDef> Cliente </th>
         <td mat-cell *matCellDef="let element"> {{ element.name }}</td>
       </ng-container>
-      <ng-container matColumnDef="age">
-        <th mat-header-cell *matHeaderCellDef> Age </th>
+      <ng-container matColumnDef="f_inicial">
+        <th mat-header-cell *matHeaderCellDef> Fecha Inicial </th>
         <td mat-cell *matCellDef="let element"> {{ element.age }}</td>
       </ng-container>
-      <ng-container matColumnDef="address">
-        <th mat-header-cell *matHeaderCellDef> Address </th>
+      <ng-container matColumnDef="f_final">
+        <th mat-header-cell *matHeaderCellDef> Fecha Final </th>
         <td mat-cell *matCellDef="let element"> {{ element.address }}</td>
       </ng-container>
+      <ng-container matColumnDef="f_descuento">
+        <th mat-header-cell *matHeaderCellDef> Fecha descuento </th>
+        <td mat-cell *matCellDef="let element"> {{ element.address }} </td>
+      </ng-container>
+      <ng-container matColumnDef="v_nominal">
+        <th mat-header-cell *matHeaderCellDef> Valor Nominal </th>
+        <td mat-cell *matCellDef="let element"> {{ element.address }} </td>
+      </ng-container>
+      <ng-container matColumnDef="t_tasa">
+        <th mat-header-cell *matHeaderCellDef> Tipo Tasa </th>
+        <td mat-cell *matCellDef="let element">  {{ element.address }} </td>
+      </ng-container>
+      <ng-container matColumnDef="tasa">
+        <th mat-header-cell *matHeaderCellDef> Tasa (%) </th>
+        <td mat-cell *matCellDef="let element"> {{ element.address }}</td>
+      </ng-container>
+      <ng-container matColumnDef="retenciones">
+        <th mat-header-cell *matHeaderCellDef> Retenciones </th>
+        <td mat-cell *matCellDef="let element"> {{ element.address }}</td>
+      </ng-container>
+      <ng-container matColumnDef="descuento">
+        <th mat-header-cell *matHeaderCellDef> Descuento </th>
+        <td mat-cell *matCellDef="let element"> {{ element.address }}</td>
+      </ng-container>
+
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let element">

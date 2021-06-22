@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('studentForm', { static: false }) studentForm!: NgForm;
   studentData: Student;
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'name', 'age', 'address', 'actions'];
+  displayedColumns: string[] = ['id', 'cliente', 'f_inicial', 'f_final', 'f_descuento', 'v_nominal', 't_tasa', 'tasa', 'retenciones', 'descuento', 'actions'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   isEditMode = false;
