@@ -27,6 +27,8 @@ import {MatCardModule} from "@angular/material/card";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSelectModule} from "@angular/material/select";
 import { LetraComponent } from './pages/letra/letra.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import { MainNavComponent } from './pages/main-nav/main-nav.component';
 
 @NgModule({
   declarations: [
@@ -35,32 +37,34 @@ import { LetraComponent } from './pages/letra/letra.component';
     HomeComponent,
     FindusComponent,
     AboutComponent,
-    LetraComponent
+    LetraComponent,
+    MainNavComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule,
-    MatGridListModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    HttpClientModule,
-    MatTooltipModule,
-    MatSelectModule,
-    MatButtonToggleModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatListModule,
-    MatNativeDateModule,
-    RouterModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatCardModule,
+        MatGridListModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        MatTableModule,
+        MatPaginatorModule,
+        HttpClientModule,
+        MatTooltipModule,
+        MatSelectModule,
+        MatButtonToggleModule,
+        ReactiveFormsModule,
+        MatDatepickerModule,
+        MatListModule,
+        MatNativeDateModule,
+        RouterModule,
+        MatSidenavModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

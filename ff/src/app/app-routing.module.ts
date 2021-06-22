@@ -5,9 +5,9 @@ import {LetraComponent} from "./pages/letra/letra.component";
 import {LoginComponent} from "./pages/login/login.component";
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
+  { path: 'letras', component: HomeComponent},
   { path: 'students/new', component: LetraComponent},
-  { path: 'login', component: LoginComponent},
+  { path: '', component: LoginComponent},
 
 ];
 
