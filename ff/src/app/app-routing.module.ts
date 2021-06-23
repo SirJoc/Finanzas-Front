@@ -6,7 +6,7 @@ import {LoginComponent} from "./pages/login/login.component";
 
 const routes: Routes = [
   { path: 'letras', component: HomeComponent},
-  { path: 'students/new', component: LetraComponent},
+  { path: 'letras/new', component: LetraComponent},
   { path: '', component: LoginComponent},
 
 ];

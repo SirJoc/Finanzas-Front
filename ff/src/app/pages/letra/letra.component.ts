@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Student } from '../../models/student';
-import { StudentsApiService } from '../../services/students-api.service';
+import { LetrasApiService } from '../../services/letras-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
+import {Letra} from "../../models/letra";
+import {Tasa} from "../../models/tasa";
 
 @Component({
   selector: 'app-letra',
@@ -11,20 +12,25 @@ import * as _ from 'lodash';
   styleUrls: ['./letra.component.css']
 })
 export class LetraComponent implements OnInit {
-  @ViewChild('studentForm', { static: false })
-  studentForm!: NgForm;
+  @ViewChild('letraForm', { static: false })
+  letraForm!: NgForm;
   isEditMode = false;
-  studentId!: number;
-  studentData: Student = {} as Student;
-  defaultStudent: Student = { id: 0, name: '', age: 0, address: ''};
-  constructor(private studentsApi: StudentsApiService, private router: Router, private route: ActivatedRoute) { }
-
+  letraId!: number;
+  letraData: Letra = {} as Letra;
+  defaultLetra: Letra = { id: 0, cliente: '', f_inicial: new Date(), f_final: new Date(), f_descuento: new Date(), v_nominal: 0,
+    t_tasa: '', tasa: 0, retenciones: 0, d: 0, descuento: 0, comentario: ''};
+  constructor(private letrasApi: LetrasApiService, private router: Router, private route: ActivatedRoute) { }
+  t_tasas: Tasa[] = [
+    {id:1, type: 'Anual'},
+    {id:2, type: 'Mensual'},
+    {id:3, type: 'Diaria'}
+  ]
   ngOnInit(): void {
-    this.studentId = Number(this.route.params.subscribe( params => {
+    this.letraId = Number(this.route.params.subscribe( params => {
       if (params.id) {
         const id = params.id;
         console.log(id);
-        this.retrieveStudent(id);
+        this.retrieveLetra(id);
         this.isEditMode = true;
         return id;
       } else {
@@ -39,20 +45,23 @@ export class LetraComponent implements OnInit {
       .then(() => console.log(this.route.url) );
   }
   resetStudent(): void {
-    this.studentData = this.defaultStudent;
+    this.letraData = this.defaultLetra;
   }
-  retrieveStudent(id: number): void {
-    this.studentsApi.getStudentById(id)
-      .subscribe((response: Student) => {
-        this.studentData = {} as Student;
-        this.studentData = _.cloneDeep(response);
+  retrieveLetra(id: number): void {
+    this.letrasApi.getLetraById(id)
+      .subscribe((response: Letra) => {
+        this.letraData = {} as Letra;
+        this.letraData = _.cloneDeep(response);
         console.log(response);
-        console.log(this.studentData);
+        console.log(this.letraData);
       });
   }
-  addStudent(): void {
-    const newStudent = {name: this.studentData.name, age: this.studentData.age, address: this.studentData.address};
-    this.studentsApi.addStudent(newStudent)
+  addLetra(): void {
+    const newLetra = {cliente: this.letraData.cliente, f_inicial: this.letraData.f_inicial,
+      f_final: this.letraData.f_final,f_descuento: this.letraData.f_descuento, v_nominal: this.letraData.v_nominal,
+      t_tasa: this.letraData.t_tasa, tasa: this.letraData.tasa, retenciones: this.letraData.retenciones,
+      d: this.letraData.d, descuento: this.letraData.descuento, comentario: this.letraData.comentario};
+    this.letrasApi.addLetra(newLetra)
       .subscribe(() => {
         this.navigateToStudents();
       });
@@ -61,23 +70,24 @@ export class LetraComponent implements OnInit {
     this.navigateToStudents();
   }
 
-  updateStudent(): void {
-    this.studentsApi.updateStudent(this.studentData.id, this.studentData as Student)
+  updateLetra(): void {
+    this.letrasApi.updateLetra(this.letraData.id, this.letraData as Letra)
       .subscribe(response => {
         console.log(response);
       });
     this.navigateToStudents();
   }
   onSubmit(): void {
-    if (this.studentForm.form.valid) {
-      console.log(this.studentData);
+    if (this.letraForm.form.valid) {
+      console.log(this.letraData);
       if (this.isEditMode) {
-        this.updateStudent();
+        this.updateLetra();
       } else {
-        this.addStudent();
+        this.addLetra();
       }
     } else {
       console.log('Invalid Data');
     }
   }
+
 }

@@ -32,6 +32,11 @@ export class LetrasApiService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  getLetraById(id: number): Observable<Letra> {
+    return this.http.get<Letra>(`${this.basePath}/${id}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
   updateLetra(id: number, item: any): Observable<Letra> {
     return this.http.put<Letra>(`${this.basePath}/${id}`, JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
