@@ -1,4 +1,4 @@
 export interface Tasa {
-  id: number;
-  type: string;
+  value: string;
+  viewValue: string;
 }

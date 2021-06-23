@@ -1,9 +1,9 @@
 <mat-card align="center">
   <mat-card-header>
-    <mat-card-title>{{ isEditMode ? 'Edit Student' : 'Add Student' }}</mat-card-title>
+    <mat-card-title>{{ isEditMode ? 'Editar Letra' : 'Agregar Letra' }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form (submit)="onSubmit()" #studentForm="ngForm">
+    <form (submit)="onSubmit()" #letraForm="ngForm">
       <p>
         <mat-form-field appearance="fill">
           <mat-label>Nombre del cliente</mat-label>
@@ -14,6 +14,7 @@
           <input matInput placeholder="F_inicial" name="f_inicial" type="date" required [(ngModel)]="letraData.f_inicial">
         </mat-form-field>
       </p>
+      {{letraData.f_inicial}}
       <p>
         <mat-form-field appearance="fill">
           <mat-label>Fecha final</mat-label>
@@ -29,13 +30,13 @@
           <mat-label>Valor nominal</mat-label>
           <input matInput placeholder="V_nominal" name="v_nominal"  type="number"  required [(ngModel)]="letraData.v_nominal">
         </mat-form-field>
-        <mat-form-field appearance="fill" class="input_right">
-            <mat-label>Tipo de tasa</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let tt of t_tasas" [value]="tt.id">
-                {{tt.type}}
-              </mat-option>
-            </mat-select>
+        <mat-form-field appearance="fill" style="margin-left: 30px">
+          <mat-label>Tipo de tasa</mat-label>
+          <mat-select [(ngModel)]="letraData.t_tasa" name="tt">
+            <mat-option *ngFor="let tt of t_tasas" [value]="tt.value">
+              {{tt.viewValue}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </p>
       <p>

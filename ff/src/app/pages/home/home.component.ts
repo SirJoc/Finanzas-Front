@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import * as _ from 'lodash';
 import {Letra} from "../../models/letra";
 import {LetrasApiService} from "../../services/letras-api.service";
+import {DatePipe} from "@angular/common";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,7 +15,7 @@ import {LetrasApiService} from "../../services/letras-api.service";
 })
 export class HomeComponent implements OnInit {
 
-  @ViewChild('studentForm', { static: false }) letraForm!: NgForm;
+  @ViewChild('letraForm', { static: false }) letraForm!: NgForm;
   letraData: Letra;
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['id', 'cliente', 'f_inicial', 'f_final', 'f_descuento', 'v_nominal', 't_tasa', 'tasa', 'retenciones', 'descuento', 'actions'];
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
   isEditMode = false;
   isFiltering = false;
 
-  constructor(private letrasApi: LetrasApiService, private router: Router) {
+  constructor(private datePipe: DatePipe, private letrasApi: LetrasApiService, private router: Router) {
     this.letraData = {} as Letra;
   }
 
@@ -68,7 +69,7 @@ export class HomeComponent implements OnInit {
   }
 
   addLetra(): void {
-    const newLetra = {cliente: this.letraData.cliente, f_inicial: this.letraData.f_inicial,
+    const newLetra = {cliente: this.letraData.cliente, f_inicial: this.datePipe.transform(this.letraData.f_inicial, "dd-MM-yyyy" ),
       f_final: this.letraData.f_final,f_descuento: this.letraData.f_descuento, v_nominal: this.letraData.v_nominal,
       t_tasa: this.letraData.t_tasa, tasa: this.letraData.tasa, retenciones: this.letraData.retenciones,
       d: this.letraData.d, descuento: this.letraData.descuento, comentario: this.letraData.comentario};

@@ -29,6 +29,7 @@ import {MatSelectModule} from "@angular/material/select";
 import { LetraComponent } from './pages/letra/letra.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import { MainNavComponent } from './pages/main-nav/main-nav.component';
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -65,7 +66,7 @@ import { MainNavComponent } from './pages/main-nav/main-nav.component';
         RouterModule,
         MatSidenavModule
     ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

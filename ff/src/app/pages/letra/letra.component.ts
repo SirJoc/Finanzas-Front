@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 import {Letra} from "../../models/letra";
 import {Tasa} from "../../models/tasa";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-letra',
@@ -17,14 +18,16 @@ export class LetraComponent implements OnInit {
   isEditMode = false;
   letraId!: number;
   letraData: Letra = {} as Letra;
+  t_tasas: Tasa[] = [
+    {value: 'Anual', viewValue: 'Anual'},
+    {value: 'Mensual', viewValue: 'Mensual'},
+    {value: 'Diaria', viewValue: 'Diaria'}
+  ];
+
   defaultLetra: Letra = { id: 0, cliente: '', f_inicial: new Date(), f_final: new Date(), f_descuento: new Date(), v_nominal: 0,
     t_tasa: '', tasa: 0, retenciones: 0, d: 0, descuento: 0, comentario: ''};
-  constructor(private letrasApi: LetrasApiService, private router: Router, private route: ActivatedRoute) { }
-  t_tasas: Tasa[] = [
-    {id:1, type: 'Anual'},
-    {id:2, type: 'Mensual'},
-    {id:3, type: 'Diaria'}
-  ]
+  constructor(private datePipe: DatePipe, private letrasApi: LetrasApiService, private router: Router, private route: ActivatedRoute) { }
+
   ngOnInit(): void {
     this.letraId = Number(this.route.params.subscribe( params => {
       if (params.id) {
@@ -34,17 +37,17 @@ export class LetraComponent implements OnInit {
         this.isEditMode = true;
         return id;
       } else {
-        this.resetStudent();
+        this.resetLetra();
         this.isEditMode = false;
         return 0;
       }
     }));
   }
-  navigateToStudents(): void {
-    this.router.navigate(['/students'])
+  navigateToLetras(): void {
+    this.router.navigate(['/letras'])
       .then(() => console.log(this.route.url) );
   }
-  resetStudent(): void {
+  resetLetra(): void {
     this.letraData = this.defaultLetra;
   }
   retrieveLetra(id: number): void {
@@ -63,11 +66,11 @@ export class LetraComponent implements OnInit {
       d: this.letraData.d, descuento: this.letraData.descuento, comentario: this.letraData.comentario};
     this.letrasApi.addLetra(newLetra)
       .subscribe(() => {
-        this.navigateToStudents();
+        this.navigateToLetras();
       });
   }
   cancelEdit(): void {
-    this.navigateToStudents();
+    this.navigateToLetras();
   }
 
   updateLetra(): void {
@@ -75,7 +78,7 @@ export class LetraComponent implements OnInit {
       .subscribe(response => {
         console.log(response);
       });
-    this.navigateToStudents();
+    this.navigateToLetras();
   }
   onSubmit(): void {
     if (this.letraForm.form.valid) {
