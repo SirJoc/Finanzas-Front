@@ -6,7 +6,7 @@ import { catchError, retry } from "rxjs/operators";
 
 @Injectable({ providedIn: 'root' })
 export class LetrasApiService {
-  basePath = 'http://localhost:3000/api/users'
+  basePath = 'http://localhost:3000/api/letras'
 
   constructor(private http: HttpClient) {  }
 
@@ -20,6 +20,11 @@ export class LetrasApiService {
       console.log(`Backend returned code ${error.status}, body was: ${error.error}`);
     }
     return throwError('Something happened with request, please try again later.');
+  }
+
+  getAllLetras(): Observable<Letra> {
+    return this.http.get<Letra>(this.basePath)
+      .pipe(retry(2), catchError(this.handleError));
   }
 
   addLetra(item: any): Observable<Letra> {

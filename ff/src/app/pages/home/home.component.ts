@@ -2,11 +2,11 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {MatTableDataSource} from "@angular/material/table";
-import {StudentsApiService} from "../../services/students-api.service";
-import {Student} from "../../models/student";
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
 import * as _ from 'lodash';
+import {Letra} from "../../models/letra";
+import {LetrasApiService} from "../../services/letras-api.service";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,8 +14,8 @@ import * as _ from 'lodash';
 })
 export class HomeComponent implements OnInit {
 
-  @ViewChild('studentForm', { static: false }) studentForm!: NgForm;
-  studentData: Student;
+  @ViewChild('studentForm', { static: false }) letraForm!: NgForm;
+  letraData: Letra;
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['id', 'cliente', 'f_inicial', 'f_final', 'f_descuento', 'v_nominal', 't_tasa', 'tasa', 'retenciones', 'descuento', 'actions'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -23,13 +23,13 @@ export class HomeComponent implements OnInit {
   isEditMode = false;
   isFiltering = false;
 
-  constructor(private studentsApi: StudentsApiService, private router: Router) {
-    this.studentData = {} as Student;
+  constructor(private letrasApi: LetrasApiService, private router: Router) {
+    this.letraData = {} as Letra;
   }
 
   ngOnInit(): void {
 
-    this.getAllStudents();
+    this.getAllLetras();
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -44,38 +44,43 @@ export class HomeComponent implements OnInit {
     }
     this.isFiltering = !!filterValue;
   }
-  getAllStudents(): void {
-    this.studentsApi.getAllStudents().subscribe((response: any) => {
+  getAllLetras(): void {
+    this.letrasApi.getAllLetras().subscribe((response: any) => {
       this.dataSource.data = response;
     });
   }
   editItem(element: any): void {
     console.log(element);
-    this.studentData = _.cloneDeep(element);
+    this.letraData = _.cloneDeep(element);
     this.isEditMode = true;
   }
   cancelEdit(): void {
     this.isEditMode = false;
-    this.studentForm.resetForm();
+    this.letraForm.resetForm();
   }
   deleteItem(id: number): void {
-    this.studentsApi.deleteStudent(id).subscribe(() => {
+    this.letrasApi.deleteLetra(id).subscribe(() => {
       this.dataSource.data = this.dataSource.data.filter((o: any) => {
         return o.id !== id ? o : false;
       });
     });
     console.log(this.dataSource.data);
   }
-  addStudent(): void {
-    const newStudent = {name: this.studentData.name, age: this.studentData.age, address: this.studentData.address};
-    this.studentsApi.addStudent(newStudent).subscribe((response: any) => {
+
+  addLetra(): void {
+    const newLetra = {cliente: this.letraData.cliente, f_inicial: this.letraData.f_inicial,
+      f_final: this.letraData.f_final,f_descuento: this.letraData.f_descuento, v_nominal: this.letraData.v_nominal,
+      t_tasa: this.letraData.t_tasa, tasa: this.letraData.tasa, retenciones: this.letraData.retenciones,
+      d: this.letraData.d, descuento: this.letraData.descuento, comentario: this.letraData.comentario};
+
+    this.letrasApi.addLetra(newLetra).subscribe((response: any) => {
       this.dataSource.data.push({...response});
       this.dataSource.data = this.dataSource.data.map(o => o);
     });
   }
-  updateStudent(): void {
-    this.studentsApi.updateStudent(this.studentData.id, this.studentData)
-      .subscribe((response: Student) => {
+  updateLetra(): void {
+    this.letrasApi.updateLetra(this.letraData.id, this.letraData)
+      .subscribe((response: Letra) => {
         this.dataSource.data = this.dataSource.data.map((o: any) => {
           if (o.id === response.id) {
             o = response;
@@ -85,28 +90,32 @@ export class HomeComponent implements OnInit {
         this.cancelEdit();
       });
   }
+
   onSubmit(): void {
-    if (this.studentForm.form.valid) {
+    if (this.letraForm.form.valid) {
       if (this.isEditMode) {
-        this.updateStudent();
+        this.updateLetra();
       } else {
-        this.addStudent();
+        this.addLetra();
       }
     } else {
       console.log('Invalid Data');
     }
   }
-  navigateToAddStudent(): void {
-    this.router.navigate(['/students/new'])
-      .then(() => console.log('Navigated to New Student'));
+
+  navigateToAddLetra(): void {
+    this.router.navigate(['/letras/new'])
+      .then(() => console.log('Navigated to New Letra'));
   }
-  navigateToEditStudent(studentId: number): void {
-    this.router.navigate([`/students/${studentId}`])
-      .then(() => console.log('Navigated to Edit Student'));
+
+  navigateToEditLetra(letraId: number): void {
+    this.router.navigate([`/letras/${letraId}`])
+      .then(() => console.log('Navigated to Edit Letra'));
   }
+
   refresh(): void {
     console.log('about to reload');
-    this.getAllStudents();
+    this.getAllLetras();
   }
 }
 

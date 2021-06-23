@@ -8,13 +8,13 @@
       <mat-grid-tile>
         <form (submit)="onSubmit()" #studentForm="ngForm">
           <mat-form-field>
-            <input matInput placeholder="Name" name="name" required [(ngModel)]="studentData.name">
+            <input matInput placeholder="Name" name="name" required [(ngModel)]="letraData.cliente">
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Age" name="age" type="number" required [(ngModel)]="studentData.age">
+            <input matInput placeholder="Age" name="age" type="number" required [(ngModel)]="letraData.comentario">
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Address" name="address" required [(ngModel)]="studentData.address">
+            <input matInput placeholder="Address" name="address" required [(ngModel)]="letraData.retenciones">
           </mat-form-field>
           <ng-container *ngIf="isEditMode; else elseTemplate">
             <button mat-button color="primary" class="mat-button-text">Update</button>
@@ -40,57 +40,57 @@
       </ng-container>
       <ng-container matColumnDef="cliente">
         <th mat-header-cell *matHeaderCellDef> Cliente </th>
-        <td mat-cell *matCellDef="let element"> {{ element.name }}</td>
+        <td mat-cell *matCellDef="let element"> {{ element.cliente }}</td>
       </ng-container>
       <ng-container matColumnDef="f_inicial">
         <th mat-header-cell *matHeaderCellDef> Fecha Inicial </th>
-        <td mat-cell *matCellDef="let element"> {{ element.age }}</td>
+        <td mat-cell *matCellDef="let element"> {{ element.f_inicial }}</td>
       </ng-container>
       <ng-container matColumnDef="f_final">
         <th mat-header-cell *matHeaderCellDef> Fecha Final </th>
-        <td mat-cell *matCellDef="let element"> {{ element.address }}</td>
+        <td mat-cell *matCellDef="let element"> {{ element.f_final }}</td>
       </ng-container>
       <ng-container matColumnDef="f_descuento">
         <th mat-header-cell *matHeaderCellDef> Fecha descuento </th>
-        <td mat-cell *matCellDef="let element"> {{ element.address }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element.f_descuento }} </td>
       </ng-container>
       <ng-container matColumnDef="v_nominal">
         <th mat-header-cell *matHeaderCellDef> Valor Nominal </th>
-        <td mat-cell *matCellDef="let element"> {{ element.address }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element.v_nominal }} </td>
       </ng-container>
       <ng-container matColumnDef="t_tasa">
         <th mat-header-cell *matHeaderCellDef> Tipo Tasa </th>
-        <td mat-cell *matCellDef="let element">  {{ element.address }} </td>
+        <td mat-cell *matCellDef="let element">  {{ element.t_tasa }} </td>
       </ng-container>
       <ng-container matColumnDef="tasa">
         <th mat-header-cell *matHeaderCellDef> Tasa (%) </th>
-        <td mat-cell *matCellDef="let element"> {{ element.address }}</td>
+        <td mat-cell *matCellDef="let element"> {{ element.tasa }}</td>
       </ng-container>
       <ng-container matColumnDef="retenciones">
         <th mat-header-cell *matHeaderCellDef> Retenciones </th>
-        <td mat-cell *matCellDef="let element"> {{ element.address }}</td>
+        <td mat-cell *matCellDef="let element"> {{ element.retenciones }}</td>
       </ng-container>
       <ng-container matColumnDef="descuento">
         <th mat-header-cell *matHeaderCellDef> Descuento </th>
-        <td mat-cell *matCellDef="let element"> {{ element.address }}</td>
+        <td mat-cell *matCellDef="let element"> {{ element.descuento }}</td>
       </ng-container>
 
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let element">
           <a href="javascript:void(0)"  (click)="editItem(element)"><mat-icon inline aria-hidden="false" aria-label="Edit" style="padding-right: 10px;">edit</mat-icon></a>
-          <a href="javascript:void(0)"  (click)="navigateToEditStudent(element.id)"><mat-icon inline aria-hidden="false" aria-label="Edit" style="padding-right: 10px;">details</mat-icon></a>
+          <a href="javascript:void(0)"  (click)="navigateToEditLetra(element.id)"><mat-icon inline aria-hidden="false" aria-label="Edit" style="padding-right: 10px;">details</mat-icon></a>
           <a href="javascript:void(0)" (click)="deleteItem(element.id)"><mat-icon inline aria-hidden="false" aria-label="Delete">delete</mat-icon></a>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-          [ngClass]="{'editable-row': studentData.id === row.id}"></tr>
+          [ngClass]="{'editable-row': letraData.id === row.id}"></tr>
     </table>
     <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
   </mat-card-content>
   <mat-card-actions>
-    <a mat-button class="mat-button-text" color="primary" (click)="navigateToAddStudent()">Add Student</a>
+    <a mat-button class="mat-button-text" color="primary" (click)="navigateToAddLetra()">Add Student</a>
     <a mat-button class="mat-button-text" color="primary" (click)="refresh()">Reload</a>
   </mat-card-actions>
 </mat-card>
