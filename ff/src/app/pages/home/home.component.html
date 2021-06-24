@@ -79,7 +79,7 @@
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let element">
           <a href="javascript:void(0)"  (click)="editItem(element)"><mat-icon inline aria-hidden="false" aria-label="Edit" style="padding-right: 10px;">edit</mat-icon></a>
-          <a href="javascript:void(0)"  (click)="navigateToEditLetra(element.id)"><mat-icon inline aria-hidden="false" aria-label="Edit" style="padding-right: 10px;">details</mat-icon></a>
+          <a href="javascript:void(0)"  (click)="infoItem(element)"><mat-icon inline aria-hidden="false" aria-label="Edit" style="padding-right: 10px;">info</mat-icon></a>
           <a href="javascript:void(0)" (click)="deleteItem(element.id)"><mat-icon inline aria-hidden="false" aria-label="Delete">delete</mat-icon></a>
         </td>
       </ng-container>

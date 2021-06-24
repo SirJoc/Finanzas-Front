@@ -32,7 +32,7 @@
       "cliente": "Libreria Clara",
       "f_inicial": "2020-10-05",
       "f_final": "2026-12-05",
-      "f_descuento": "25-12-23",
+      "f_descuento": "2023-12-25",
       "v_nominal": 1200,
       "t_tasa": "Anual",
       "tasa": 0.05,
@@ -54,20 +54,6 @@
       "d": 0.029421,
       "descuento": 12,
       "comentarios": ""
-    },
-    {
-      "cliente": "Juan",
-      "f_inicial": "2021-06-03",
-      "f_final": "2021-06-05",
-      "f_descuento": "2021-06-16",
-      "v_nominal": 0,
-      "t_tasa": "Mensual",
-      "tasa": 0,
-      "retenciones": 0,
-      "d": 0,
-      "descuento": 0,
-      "comentario": "",
-      "id": 4
     }
   ],
   "students": [

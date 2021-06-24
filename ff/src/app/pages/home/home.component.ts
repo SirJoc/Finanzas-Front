@@ -8,6 +8,8 @@ import * as _ from 'lodash';
 import {Letra} from "../../models/letra";
 import {LetrasApiService} from "../../services/letras-api.service";
 import {DatePipe} from "@angular/common";
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,8 +24,20 @@ export class HomeComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   isEditMode = false;
+  isInfoMode = false;
   isFiltering = false;
-
+  TEA_SC: number = 0;
+  Numero_Dias: number = 0;
+  Tasa_EfectD: number = 0;
+  Tasa_descontada_Dias: number = 0;
+  Descuento_D: number = 0;
+  Reten: number = 0;
+  Costes_Iniciales_T: number = 0;
+  Valor_neto: number = 0;
+  Valor_Total_Rec: number = 0;
+  Costes_Finales_T: number = 0;
+  Valor_Total_En: number = 0;
+  TCEA: number = 0;
   constructor(private datePipe: DatePipe, private letrasApi: LetrasApiService, private router: Router) {
     this.letraData = {} as Letra;
   }
@@ -55,6 +69,28 @@ export class HomeComponent implements OnInit {
     this.letraData = _.cloneDeep(element);
     this.isEditMode = true;
   }
+
+  infoItem(element: any): void {
+    console.log(element);
+    this.letraData = _.cloneDeep(element);
+    this.isInfoMode = true;
+    this.TEA_SC = this.letraData.tasa;
+    var f1 = moment(this.letraData.f_final)
+    var f2 = moment(this.letraData.f_descuento)
+    this.Numero_Dias = f1.diff(f2, 'days');
+    this.Tasa_EfectD = Math.pow((1+this.letraData.tasa),(this.Numero_Dias/360)) - 1;
+    this.Tasa_descontada_Dias = this.letraData.tasa/(1+this.letraData.tasa);
+    this.Descuento_D = this.letraData.v_nominal * this.Tasa_descontada_Dias;
+    this.Reten = this.letraData.retenciones;
+    this.Valor_neto = this.letraData.v_nominal - (this.letraData.v_nominal*this.Tasa_descontada_Dias);
+    this.Valor_Total_Rec = this.Valor_neto - this.Reten;
+    this.Valor_Total_En = this.letraData.v_nominal - this.Reten;
+    this.TCEA = Math.pow((this.Valor_Total_En/this.Valor_Total_Rec), (360/this.Numero_Dias)) -1;
+    console.log(this.Tasa_descontada_Dias)
+    console.log(this.Valor_neto, this.Reten)
+    console.log(this.Valor_Total_Rec, this.Valor_Total_En);
+  }
+
   cancelEdit(): void {
     this.isEditMode = false;
     this.letraForm.resetForm();
@@ -118,5 +154,13 @@ export class HomeComponent implements OnInit {
     console.log('about to reload');
     this.getAllLetras();
   }
+
+  getDiff(item: any): void {
+    var f1 = moment(item.f_final)
+    var f2 = moment(item.f_descuento)
+
+    console.log(f1.diff(f2, 'days'));
+  }
+
 }
 
