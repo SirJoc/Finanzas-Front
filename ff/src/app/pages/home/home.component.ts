@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('letraForm', { static: false }) letraForm!: NgForm;
   letraData: Letra;
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'cliente', 'f_inicial', 'f_final', 'f_descuento', 'v_nominal', 't_tasa', 'tasa', 'retenciones', 'descuento', 'actions'];
+  displayedColumns: string[] = ['id', 'cliente', 'f_inicial', 'f_final', 'f_descuento', 'v_nominal', 't_tasa', 'tasa', 'retenciones', 'actions'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   isEditMode = false;
@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
   Costes_Finales_T: number = 0;
   Valor_Total_En: number = 0;
   TCEA: number = 0;
+  gridColumns = 2;
   constructor(private datePipe: DatePipe, private letrasApi: LetrasApiService, private router: Router) {
     this.letraData = {} as Letra;
   }
@@ -74,21 +75,46 @@ export class HomeComponent implements OnInit {
     console.log(element);
     this.letraData = _.cloneDeep(element);
     this.isInfoMode = true;
-    this.TEA_SC = this.letraData.tasa;
+    if (this.letraData.t_tasa === 'Nominal') {
+      this.TEA_SC = (Math.pow(1+(this.letraData.tasa/360), 360) -1);
+      var ss = this.TEA_SC.toFixed(9);
+      this.TEA_SC = parseFloat(ss);
+    }else {
+      this.TEA_SC = this.letraData.tasa;
+    }
+
     var f1 = moment(this.letraData.f_final)
     var f2 = moment(this.letraData.f_descuento)
     this.Numero_Dias = f1.diff(f2, 'days');
-    this.Tasa_EfectD = Math.pow((1+this.letraData.tasa),(this.Numero_Dias/360)) - 1;
-    this.Tasa_descontada_Dias = this.letraData.tasa/(1+this.letraData.tasa);
+    // NO SE TOCA
+    this.Tasa_EfectD = Math.pow((1+this.TEA_SC),(this.Numero_Dias/360)) - 1;
+    var s1 = this.Tasa_EfectD.toFixed(9);
+    this.Tasa_EfectD = parseFloat(s1);
+
+    this.Tasa_descontada_Dias = this.Tasa_EfectD/(1+this.Tasa_EfectD);
+    var s2 = this.Tasa_descontada_Dias.toFixed(9);
+    this.Tasa_descontada_Dias = parseFloat(s2);
+
     this.Descuento_D = this.letraData.v_nominal * this.Tasa_descontada_Dias;
+    var x1 = this.Descuento_D.toFixed(2)
+    this.Descuento_D = parseFloat(x1);
+
     this.Reten = this.letraData.retenciones;
+
     this.Valor_neto = this.letraData.v_nominal - (this.letraData.v_nominal*this.Tasa_descontada_Dias);
+    var x2 = this.Valor_neto.toFixed(2);
+    this.Valor_neto = parseFloat(x2);
+
     this.Valor_Total_Rec = this.Valor_neto - this.Reten;
     this.Valor_Total_En = this.letraData.v_nominal - this.Reten;
     this.TCEA = Math.pow((this.Valor_Total_En/this.Valor_Total_Rec), (360/this.Numero_Dias)) -1;
-    console.log(this.Tasa_descontada_Dias)
-    console.log(this.Valor_neto, this.Reten)
-    console.log(this.Valor_Total_Rec, this.Valor_Total_En);
+    var s3 = this.TCEA.toFixed(9);
+    this.TCEA = parseFloat(s3);
+  }
+
+  cancelInfo(): void {
+    this.isInfoMode = false;
+    this.letraForm.resetForm()
   }
 
   cancelEdit(): void {
@@ -108,7 +134,7 @@ export class HomeComponent implements OnInit {
     const newLetra = {cliente: this.letraData.cliente, f_inicial: this.datePipe.transform(this.letraData.f_inicial, "dd-MM-yyyy" ),
       f_final: this.letraData.f_final,f_descuento: this.letraData.f_descuento, v_nominal: this.letraData.v_nominal,
       t_tasa: this.letraData.t_tasa, tasa: this.letraData.tasa, retenciones: this.letraData.retenciones,
-      d: this.letraData.d, descuento: this.letraData.descuento, comentario: this.letraData.comentario};
+      comentario: this.letraData.comentario};
 
     this.letrasApi.addLetra(newLetra).subscribe((response: any) => {
       this.dataSource.data.push({...response});

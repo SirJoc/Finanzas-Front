@@ -19,13 +19,12 @@ export class LetraComponent implements OnInit {
   letraId!: number;
   letraData: Letra = {} as Letra;
   t_tasas: Tasa[] = [
-    {value: 'Anual', viewValue: 'Anual'},
-    {value: 'Mensual', viewValue: 'Mensual'},
-    {value: 'Diaria', viewValue: 'Diaria'}
+    {value: 'Efectiva', viewValue: 'Efectiva'},
+    {value: 'Nominal', viewValue: 'Nominal'}
   ];
 
   defaultLetra: Letra = { id: 0, cliente: '', f_inicial: new Date(), f_final: new Date(), f_descuento: new Date(), v_nominal: 0,
-    t_tasa: '', tasa: 0, retenciones: 0, d: 0, descuento: 0, comentario: ''};
+    t_tasa: '', tasa: 0, retenciones: 0, comentario: ''};
   constructor(private datePipe: DatePipe, private letrasApi: LetrasApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -62,8 +61,8 @@ export class LetraComponent implements OnInit {
   addLetra(): void {
     const newLetra = {cliente: this.letraData.cliente, f_inicial: this.letraData.f_inicial,
       f_final: this.letraData.f_final,f_descuento: this.letraData.f_descuento, v_nominal: this.letraData.v_nominal,
-      t_tasa: this.letraData.t_tasa, tasa: this.letraData.tasa, retenciones: this.letraData.retenciones,
-      d: this.letraData.d, descuento: this.letraData.descuento, comentario: this.letraData.comentario};
+      t_tasa: this.letraData.t_tasa, tasa: this.letraData.tasa/100, retenciones: this.letraData.retenciones,
+      comentario: this.letraData.comentario};
     this.letrasApi.addLetra(newLetra)
       .subscribe(() => {
         this.navigateToLetras();

@@ -8,7 +8,5 @@ export interface Letra {
   t_tasa: string;
   tasa: number;
   retenciones: number;
-  d: number;
-  descuento: number;
   comentario: string;
 }

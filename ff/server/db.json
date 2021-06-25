@@ -19,11 +19,9 @@
       "f_final": "2026-12-05",
       "f_descuento": "2023-12-25",
       "v_nominal": 1123,
-      "t_tasa": "Anual",
+      "t_tasa": "Nominal",
       "tasa": 0.03,
       "retenciones": 112,
-      "d": 0.029421,
-      "descuento": 42,
       "comentarios": "",
       "comentario": 52
     },
@@ -34,11 +32,9 @@
       "f_final": "2026-12-05",
       "f_descuento": "2023-12-25",
       "v_nominal": 1200,
-      "t_tasa": "Anual",
+      "t_tasa": "Nominal",
       "tasa": 0.05,
       "retenciones": 600,
-      "d": 0.029421,
-      "descuento": 32,
       "comentarios": ""
     },
     {
@@ -48,11 +44,9 @@
       "f_final": "2026-12-05",
       "f_descuento": "2023-12-25",
       "v_nominal": 1049.9,
-      "t_tasa": "Anual",
+      "t_tasa": "Nominal",
       "tasa": 0.06,
       "retenciones": 104,
-      "d": 0.029421,
-      "descuento": 12,
       "comentarios": ""
     }
   ],
