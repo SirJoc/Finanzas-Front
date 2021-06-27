@@ -1,38 +1,52 @@
+<main-nav></main-nav>
 <mat-card>
-  <mat-card-header>
-    <mat-card-title>Letras</mat-card-title>
-    <mat-card-subtitle>{{ isEditMode ? 'Edit Letra' : 'Add new Letra' }}</mat-card-subtitle>
-  </mat-card-header>
+  <h1 align="center" style ="font-size: 50px; margin-top: 30px; color: #3f51b5">Letras</h1>
+  <mat-form-field *ngIf="!isEditMode">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex.Juanito" #input>
+    <mat-icon *ngIf="isFiltering" matSuffix>search</mat-icon>
+  </mat-form-field>
   <mat-card-content>
-    <mat-grid-list cols="2" rowHeight="100px">
-      <mat-grid-tile>
-        <form (submit)="onSubmit()" #letraForm="ngForm" *ngIf="isEditMode">
-          <mat-form-field>
-            <input matInput placeholder="Name" name="name" required [(ngModel)]="letraData.cliente">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Age" name="age" type="number" required [(ngModel)]="letraData.comentario">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Address" name="address" required [(ngModel)]="letraData.retenciones">
-          </mat-form-field>
-          <ng-container *ngIf="isEditMode; else elseTemplate">
+    <ng-container *ngIf="isEditMode;">
+      <mat-card-subtitle style = "margin-left: 13px; margin-top: 50px; font-size: 30px; color: #3f51b5" >{{ isEditMode ? 'Edit Letra' : 'Add new Letra' }}</mat-card-subtitle>
+      <mat-grid-list cols="2" rowHeight="200px">
+        <mat-grid-tile>
+          <form (submit)="onSubmit()" #letraForm="ngForm" *ngIf="isEditMode">
+            <mat-form-field>
+              <input matInput placeholder="Cliente" name="cliente" type="text" required [(ngModel)]="letraData.cliente">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Fecha Inicial" name="f_inicial" type="date" required [(ngModel)]="letraData.f_inicial">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Fecha Final" name="f_final" type="date" required [(ngModel)]="letraData.f_final">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Fecha Descuento" name="f_descuento" type="date" required [(ngModel)]="letraData.f_descuento">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Valor Nominal" name="v_nominal" required [(ngModel)]="letraData.v_nominal">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Tipo de tasa</mat-label>
+              <mat-select [(ngModel)]="letraData.t_tasa" name="tt">
+                <mat-option *ngFor="let tt of t_tasas" [value]="tt.value">
+                  {{tt.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Tasa" name="tasa" required [(ngModel)]="letraData.tasa">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="sRetenciones" name="retenciones" required [(ngModel)]="letraData.retenciones">
+            </mat-form-field>
             <button mat-button color="primary" class="mat-button-text">Update</button>
             <button mat-button class="mat-button-text" color="warn" (click)="cancelEdit()">Cancel</button>
-          </ng-container>
-          <ng-template #elseTemplate>
-            <button mat-button color="primary" class="mat-button-text">Add</button>
-          </ng-template>
-        </form>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-form-field>
-          <mat-label>Filter</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Ex.John Doe" #input>
-          <mat-icon *ngIf="isFiltering" matSuffix>search</mat-icon>
-        </mat-form-field>
-      </mat-grid-tile>
-    </mat-grid-list>
+          </form>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </ng-container>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -96,66 +110,66 @@
 <div class="content" *ngIf="isInfoMode">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
     <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="35%">
-        <mat-card class="mat-elevation-z4">
-          <mat-card-content>
-              <span>(TEA) Tasa Efectiva Anual</span><br>
-              <mat-form-field appearance="fill">
-                <mat-label>(TEA)</mat-label>
-                <input matInput disabled [(ngModel)]="TEA_SC">
-              </mat-form-field>
-            <br>
-            <span>(ND) Número de días transcurridos</span><br>
-              <mat-form-field appearance="fill">
-                <mat-label>(ND)</mat-label>
-                <input matInput disabled [(ngModel)]="Numero_Dias">
-              </mat-form-field>
+      <mat-card class="mat-elevation-z4">
+        <mat-card-content>
+          <span>(TEA) Tasa Efectiva Anual</span><br>
+          <mat-form-field appearance="fill">
+            <mat-label>(TEA)</mat-label>
+            <input matInput disabled [(ngModel)]="TEA_SC">
+          </mat-form-field>
+          <br>
+          <span>(ND) Número de días transcurridos</span><br>
+          <mat-form-field appearance="fill">
+            <mat-label>(ND)</mat-label>
+            <input matInput disabled [(ngModel)]="Numero_Dias">
+          </mat-form-field>
 
-            <br>
-            <span>(TE) Tasa Efectiva a {{Numero_Dias}} días</span><br>
-            <mat-form-field appearance="fill">
-              <mat-label>(TE)</mat-label>
-              <input matInput disabled [(ngModel)]="Tasa_EfectD">
-            </mat-form-field><br>
-            <span>(d) Tasa descontada a {{Numero_Dias}} días</span><br>
-            <mat-form-field appearance="fill">
-              <mat-label>(d)</mat-label>
-              <input matInput disabled [(ngModel)]="Tasa_descontada_Dias">
-            </mat-form-field>
-            <br/>
-            <span>(D) Descuento por días</span><br>
-            <mat-form-field appearance="fill">
-              <mat-label>(D)</mat-label>
-              <input matInput disabled [(ngModel)]="Descuento_D">
-            </mat-form-field>
+          <br>
+          <span>(TE) Tasa Efectiva a {{Numero_Dias}} días</span><br>
+          <mat-form-field appearance="fill">
+            <mat-label>(TE)</mat-label>
+            <input matInput disabled [(ngModel)]="Tasa_EfectD">
+          </mat-form-field><br>
+          <span>(d) Tasa descontada a {{Numero_Dias}} días</span><br>
+          <mat-form-field appearance="fill">
+            <mat-label>(d)</mat-label>
+            <input matInput disabled [(ngModel)]="Tasa_descontada_Dias">
+          </mat-form-field>
+          <br/>
+          <span>(D) Descuento por días</span><br>
+          <mat-form-field appearance="fill">
+            <mat-label>(D)</mat-label>
+            <input matInput disabled [(ngModel)]="Descuento_D">
+          </mat-form-field>
 
-          </mat-card-content>
-        </mat-card >
+        </mat-card-content>
+      </mat-card >
     </div>
     <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="35%">
 
-        <mat-card class="mat-elevation-z4">
-          <span>(Rt) Retención</span><br/>
-          <mat-form-field appearance="fill">
-            <mat-label>(Rt)</mat-label>
-            <input matInput disabled [(ngModel)]="Reten">
-          </mat-form-field><br/>
+      <mat-card class="mat-elevation-z4">
+        <span>(Rt) Retención</span><br/>
+        <mat-form-field appearance="fill">
+          <mat-label>(Rt)</mat-label>
+          <input matInput disabled [(ngModel)]="Reten">
+        </mat-form-field><br/>
 
-          <span>(VNet) Valor Neto</span><br/>
+        <span>(VNet) Valor Neto</span><br/>
         <mat-form-field appearance="fill">
           <mat-label>(VNet)</mat-label>
           <input matInput disabled [(ngModel)]="Valor_neto">
         </mat-form-field><br/>
-          <span>(VR) Valor total a recibir</span><br/>
+        <span>(VR) Valor total a recibir</span><br/>
         <mat-form-field appearance="fill">
           <mat-label>(VR)</mat-label>
           <input matInput disabled [(ngModel)]="Valor_Total_Rec">
         </mat-form-field><br/>
-          <span>(VE) Valor total a entregar</span><br/>
+        <span>(VE) Valor total a entregar</span><br/>
         <mat-form-field appearance="fill">
           <mat-label>(VE)</mat-label>
           <input matInput disabled [(ngModel)]="Valor_Total_En">
         </mat-form-field><br/>
-          <span>(TCEA) Tasa de coste efectiva anual</span><br/>
+        <span>(TCEA) Tasa de coste efectiva anual</span><br/>
         <mat-form-field appearance="fill">
           <mat-label>(TCEA)</mat-label>
           <input matInput disabled [(ngModel)]="TCEA">

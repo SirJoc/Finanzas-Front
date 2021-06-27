@@ -24,7 +24,7 @@
           <p>
             <mat-form-field appearance="outline" style="background-color: white">
               <mat-label>Usuario</mat-label>
-              <input matInput placeholder="Usuario" class="form-control" [(ngModel)]="userData.id">
+              <input matInput placeholder="Usuario" class="form-control" [(ngModel)]="userData.username">
             </mat-form-field>
           </p>
           <p>
@@ -34,8 +34,7 @@
             </mat-form-field>
           </p>
 
-          <button mat-raised-button color="primary"
-          routerLink="letras" routerLinkActive="active">
+          <button mat-raised-button color="primary" [disabled]="!isCorrect" routerLink="letras" routerLinkActive="active">
             Login
           </button>
 

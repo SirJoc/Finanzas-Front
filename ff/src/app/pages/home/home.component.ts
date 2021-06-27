@@ -9,11 +9,13 @@ import {Letra} from "../../models/letra";
 import {LetrasApiService} from "../../services/letras-api.service";
 import {DatePipe} from "@angular/common";
 import * as moment from 'moment';
+import {Tasa} from "../../models/tasa";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
+
 })
 export class HomeComponent implements OnInit {
 
@@ -39,6 +41,10 @@ export class HomeComponent implements OnInit {
   Valor_Total_En: number = 0;
   TCEA: number = 0;
   gridColumns = 2;
+  t_tasas: Tasa[] = [
+    {value: 'Efectiva', viewValue: 'Efectiva'},
+    {value: 'Nominal', viewValue: 'Nominal'}
+  ];
   constructor(private datePipe: DatePipe, private letrasApi: LetrasApiService, private router: Router) {
     this.letraData = {} as Letra;
   }

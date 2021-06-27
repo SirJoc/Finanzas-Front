@@ -11,8 +11,12 @@ export class LoginComponent implements OnInit {
   user: User = { id: 0, username:"", password:""};
   constructor(private usersApi: UsersApiService) { }
   userData: User = {} as User;
+  isCorrect = false;
   ngOnInit(): void {
-
+    this.usersApi.getUserById(2).subscribe(response => {
+      console.log(response);
+      console.log(response.username);
+    })
   }
 
   getUserById(id: number): void {
@@ -24,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   enter(): boolean {
-    if (this.userData.id === this.user.id && this.userData.password === this.user.password) {
+    if (this.userData.username === this.user.username && this.userData.password === this.user.password) {
       return true;
     }else {
       return false;
