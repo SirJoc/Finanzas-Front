@@ -31,6 +31,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import { MainNavComponent } from './pages/main-nav/main-nav.component';
 import {DatePipe} from "@angular/common";
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { UserComponent } from './pages/user/user.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FindusComponent,
     AboutComponent,
     LetraComponent,
-    MainNavComponent
+    MainNavComponent,
+    UserComponent
   ],
     imports: [
         BrowserModule,

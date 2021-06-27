@@ -1,0 +1,28 @@
+<mat-card class="background-card">
+  <div align="center">
+    <mat-card style="width: 500px; margin-top: 200px">
+      <h2 style="font-size: 30px; margin-top: 30px"><strong>Crear una cuenta</strong></h2>
+      <mat-form-field appearance="fill" class="inputs" style="margin-top: 30px">
+        <mat-label>Nombre de usuario: </mat-label>
+        <input matInput required [(ngModel)]="userData.username">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill" class="inputs">
+        <mat-label>Ingrese su contraseña:</mat-label>
+        <input matInput required [type]="hide ? 'password' : 'text'" [(ngModel)]="userData.password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <br>
+      <br>
+      <br>
+      <button mat-raised-button color="primary" (click)="addSUser()">Crear</button>
+      <button mat-raised-button color="warn" style="margin-left: 20px" (click)="routesToLogin()">Cancelar</button>
+      <br>
+      <br>
+      <br>
+    </mat-card>
+  </div>
+</mat-card>
+

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../../models/user";
 import { UsersApiService } from "../../services/users-api.service";
 import {Router} from "@angular/router";
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,38 +12,33 @@ export class LoginComponent implements OnInit {
   constructor(private usersApi: UsersApiService, private router: Router) { }
   userData: User = {} as User;
   leng_users = 0;
-  isOk = false
+  isOk = false;
   isCorrect = false;
+
   ngOnInit(): void {
     this.usersApi.getAll().subscribe(response=> {
       this.leng_users = response.length;
     })
   }
-
-  enter(item: User): void {
-    if (this.userData.username === item.username && this.userData.password === item.password) {
-      this.isCorrect= true;
-    }
-  }
-  routex(): void {
+  routex() {
     this.router.navigate(['letras'])
-      .then(() => console.log('Navigated to Letras'))
-
+      .then(() => console.log('Navigated to Letras'));
   }
-  identifyUser(): void {
-    var b = false;
-    for (let i = 1; i <= this.leng_users; i++){
-      this.usersApi.getUserById(i).subscribe(response => {
-        this.enter(response);
+  identifyUser() : void {
+    for(let i = 1; i<= this.leng_users;i++)
+    {
+      this.usersApi.getUserById(i).subscribe(response=>{
+        if(response.username === this.userData.username){
+          if(response.password === this.userData.password){
+            this.routex();
+          }
+        }
       })
     }
-    console.log(this.isCorrect)
-    if(this.isCorrect){
-      this.routex()
-    }else{
-      alert('tamalitos')
-    }
   }
 
-
+  createUserRoute()  {
+    this.router.navigate(['user/new'])
+      .then(() => console.log('Creating a user'));
+  }
 }

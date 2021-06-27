@@ -9,6 +9,11 @@
       "id": 2,
       "username": "Renzo",
       "password": "123"
+    },
+    {
+      "username": "Omar",
+      "password": "12345",
+      "id": 3
     }
   ],
   "letras": [
