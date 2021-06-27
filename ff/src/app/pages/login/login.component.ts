@@ -26,31 +26,30 @@ export class LoginComponent implements OnInit {
   enter(item: User): void {
     if (this.userData.username === item.username && this.userData.password === item.password) {
       this.isCorrect= true;
+      this.routex()
     }else {
       this.isCorrect= false;
+      //console.log(item, this.userData, this.isCorrect)
+
     }
   }
   routex(): void {
     this.router.navigate(['letras'])
       .then(() => console.log('Navigated to Letras'))
+
   }
   identifyUser(): void {
-
-    for (let i =1; i <= this.leng_users; i++){
+    var b = false;
+    for (let i = 1; i <= this.leng_users; i++){
       this.usersApi.getUserById(i).subscribe(response => {
-        this.enter(response)
+        this.enter(response);
         if(this.isCorrect){
-          this.routex()
-          this.isOk = true
+          return
         }
       })
-    }
-    if(this.isOk){
-      alert("El usuario o la contraseña son incorrectos")
-    }else {
-      console.log('se logro')
-    }
 
+
+    }
   }
 
 
