@@ -20,6 +20,11 @@ export class UsersApiService {
     return throwError('Something happened with request, please try again later.');
   }
 
+  getAll(): Observable<any> {
+    return this.http.get<any>(this.basePath, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
   addUser(item: any): Observable<User> {
     return this.http.post<User>(this.basePath, JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));

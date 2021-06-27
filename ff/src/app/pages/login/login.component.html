@@ -34,7 +34,7 @@
             </mat-form-field>
           </p>
 
-          <button mat-raised-button color="primary" [disabled]="!isCorrect" routerLink="letras" routerLinkActive="active">
+          <button mat-raised-button color="primary" (click)="identifyUser()">
             Login
           </button>
 

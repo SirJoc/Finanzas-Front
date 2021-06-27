@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../models/user";
 import { UsersApiService } from "../../services/users-api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -9,29 +10,48 @@ import { UsersApiService } from "../../services/users-api.service";
 })
 export class LoginComponent implements OnInit {
   user: User = { id: 0, username:"", password:""};
-  constructor(private usersApi: UsersApiService) { }
+  constructor(private usersApi: UsersApiService, private router: Router) { }
   userData: User = {} as User;
+  leng_users = 0;
+  isOk = false
   isCorrect = false;
   ngOnInit(): void {
-    this.usersApi.getUserById(2).subscribe(response => {
-      console.log(response);
-      console.log(response.username);
+    this.usersApi.getAll().subscribe(response=> {
+      console.log(response.length)
+      this.leng_users = response.length;
     })
+
   }
 
-  getUserById(id: number): void {
-    this.usersApi.getUserById(id).subscribe(
-      (response: any) => {
-        this.user = response.data;
-      }
-    )
-  }
-
-  enter(): boolean {
-    if (this.userData.username === this.user.username && this.userData.password === this.user.password) {
-      return true;
+  enter(item: User): void {
+    if (this.userData.username === item.username && this.userData.password === item.password) {
+      this.isCorrect= true;
     }else {
-      return false;
+      this.isCorrect= false;
     }
   }
+  routex(): void {
+    this.router.navigate(['letras'])
+      .then(() => console.log('Navigated to Letras'))
+  }
+  identifyUser(): void {
+
+    for (let i =1; i <= this.leng_users; i++){
+      this.usersApi.getUserById(i).subscribe(response => {
+        this.enter(response)
+        if(this.isCorrect){
+          this.routex()
+          this.isOk = true
+        }
+      })
+    }
+    if(this.isOk){
+      alert("El usuario o la contraseña son incorrectos")
+    }else {
+      console.log('se logro')
+    }
+
+  }
+
+
 }
