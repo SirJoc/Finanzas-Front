@@ -17,20 +17,13 @@ export class LoginComponent implements OnInit {
   isCorrect = false;
   ngOnInit(): void {
     this.usersApi.getAll().subscribe(response=> {
-      console.log(response.length)
       this.leng_users = response.length;
     })
-
   }
 
   enter(item: User): void {
     if (this.userData.username === item.username && this.userData.password === item.password) {
       this.isCorrect= true;
-      this.routex()
-    }else {
-      this.isCorrect= false;
-      //console.log(item, this.userData, this.isCorrect)
-
     }
   }
   routex(): void {
@@ -43,12 +36,13 @@ export class LoginComponent implements OnInit {
     for (let i = 1; i <= this.leng_users; i++){
       this.usersApi.getUserById(i).subscribe(response => {
         this.enter(response);
-        if(this.isCorrect){
-          return
-        }
       })
-
-
+    }
+    console.log(this.isCorrect)
+    if(this.isCorrect){
+      this.routex()
+    }else{
+      alert('tamalitos')
     }
   }
 
