@@ -22,9 +22,8 @@ export class LetraComponent implements OnInit {
     {value: 'Efectiva', viewValue: 'Efectiva'},
     {value: 'Nominal', viewValue: 'Nominal'}
   ];
+  defaultLetra: Letra = {} as Letra;
 
-  defaultLetra: Letra = { id: 0, cliente: '', f_inicial: new Date(), f_final: new Date(), f_descuento: new Date(), v_nominal: 0,
-    t_tasa: '', tasa: 0, retenciones: 0, comentario: ''};
   constructor(private datePipe: DatePipe, private letrasApi: LetrasApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {

@@ -12,27 +12,27 @@
         </mat-form-field>
         <mat-form-field appearance="fill" class="input_right">
           <mat-label>Fecha inicial</mat-label>
-          <input matInput placeholder="F_inicial" name="f_inicial" type="date" required [(ngModel)]="letraData.f_inicial">
+          <input matInput placeholder="F_inicial" required name="f_inicial" type="date" required [(ngModel)]="letraData.f_inicial">
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
           <mat-label>Fecha final</mat-label>
-          <input matInput placeholder="F_final" name="f_final"  type="date"  required [(ngModel)]="letraData.f_final">
+          <input matInput placeholder="F_final" required name="f_final"  type="date"  required [(ngModel)]="letraData.f_final">
         </mat-form-field>
         <mat-form-field appearance="fill" class="input_right">
           <mat-label>Fecha de descuento</mat-label>
-          <input matInput placeholder="F_descuento" name="f_descuento" type="date" required [(ngModel)]="letraData.f_descuento">
+          <input matInput placeholder="F_descuento" required name="f_descuento" type="date" required [(ngModel)]="letraData.f_descuento">
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
           <mat-label>Valor nominal</mat-label>
-          <input matInput placeholder="V_nominal" name="v_nominal"  type="number"  required [(ngModel)]="letraData.v_nominal">
+          <input matInput placeholder="V_nominal" required name="v_nominal"  type="number"  required [(ngModel)]="letraData.v_nominal">
         </mat-form-field>
         <mat-form-field appearance="fill" style="margin-left: 30px">
           <mat-label>Tipo de tasa</mat-label>
-          <mat-select [(ngModel)]="letraData.t_tasa" name="tt">
+          <mat-select [(ngModel)]="letraData.t_tasa" name="tt"  required>
             <mat-option *ngFor="let tt of t_tasas" [value]="tt.value">
               {{tt.viewValue}}
             </mat-option>
@@ -42,11 +42,11 @@
       <p>
         <mat-form-field appearance="fill">
           <mat-label>Tasa</mat-label>
-          <input matInput placeholder="Tasa" name="tasa"  type="number"  required [(ngModel)]="letraData.tasa">
+          <input matInput placeholder="Tasa" required name="tasa"  type="number"  required [(ngModel)]="letraData.tasa">
         </mat-form-field>
         <mat-form-field appearance="fill" class="input_right">
           <mat-label>Retenciones</mat-label>
-          <input matInput placeholder="Retenciones" name="retenciones" type="number" required [(ngModel)]="letraData.retenciones">
+          <input matInput placeholder="Retenciones"  required name="retenciones" type="number" required [(ngModel)]="letraData.retenciones">
         </mat-form-field>
       </p>
       <p>
