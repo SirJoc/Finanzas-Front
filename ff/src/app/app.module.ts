@@ -32,6 +32,7 @@ import { MainNavComponent } from './pages/main-nav/main-nav.component';
 import {DatePipe} from "@angular/common";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UserComponent } from './pages/user/user.component';
+import { SupportComponent } from './pages/support/support.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { UserComponent } from './pages/user/user.component';
     AboutComponent,
     LetraComponent,
     MainNavComponent,
-    UserComponent
+    UserComponent,
+    SupportComponent
   ],
     imports: [
         BrowserModule,
