@@ -18,7 +18,7 @@ color-profile{
 
 
 mat-form-field {
-  width: 205px;
+  width: 200px;
   margin-left: 15px;
   margin-right: 15px;
 }
@@ -32,10 +32,6 @@ input:disabled{
   padding: 16px;
 }
 
-.content > mat-card {
-  margin-bottom: 16px;
-}
-
 .titulo {
-  : center;
+
 }

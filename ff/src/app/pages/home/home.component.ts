@@ -112,9 +112,13 @@ export class HomeComponent implements OnInit {
     this.Valor_neto = parseFloat(x2);
 
     this.Valor_Total_Rec = this.Valor_neto - this.Reten;
+    var l1 = this.Valor_Total_Rec.toFixed(2);
+    this.Valor_Total_Rec = parseFloat(l1);
     this.Valor_Total_En = this.letraData.v_nominal - this.Reten;
-    this.TCEA = Math.pow((this.Valor_Total_En/this.Valor_Total_Rec), (360/this.Numero_Dias)) -1;
-    var s3 = this.TCEA.toFixed(9);
+    var l2 = this.Valor_Total_En.toFixed(2);
+    this.Valor_Total_En = parseFloat(l2);
+    this.TCEA = (Math.pow((this.Valor_Total_En/this.Valor_Total_Rec), (360/this.Numero_Dias)) -1)*100;
+    var s3 = this.TCEA.toFixed(7);
     this.TCEA = parseFloat(s3);
   }
 

@@ -6,10 +6,10 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex.Juanito" #input>
     <mat-icon *ngIf="isFiltering" matSuffix>search</mat-icon>
   </mat-form-field>
-  <mat-card-content>
-    <ng-container *ngIf="isEditMode;">
-      <mat-card-subtitle style = "margin-left: 13px; margin-top: 50px; font-size: 30px; color: #3f51b5" >{{ isEditMode ? 'Edit Letra' : 'Add new Letra' }}</mat-card-subtitle>
-      <mat-grid-list cols="2" rowHeight="200px">
+  <mat-card-content >
+    <ng-container *ngIf="isEditMode;" >
+<div style="width: 800px">
+      <mat-grid-list cols="1" rowHeight="3:1">
         <mat-grid-tile>
           <form (submit)="onSubmit()" #letraForm="ngForm" *ngIf="isEditMode">
             <mat-form-field>
@@ -41,11 +41,13 @@
             <mat-form-field>
               <input matInput placeholder="Retenciones" name="retenciones" required [(ngModel)]="letraData.retenciones">
             </mat-form-field>
+            <br>
             <button mat-button color="primary" class="mat-button-text">Update</button>
             <button mat-button class="mat-button-text" color="warn" (click)="cancelEdit()">Cancel</button>
           </form>
         </mat-grid-tile>
       </mat-grid-list>
+</div>
     </ng-container>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="id">
@@ -169,9 +171,9 @@
           <mat-label>(VE)</mat-label>
           <input matInput disabled [(ngModel)]="Valor_Total_En">
         </mat-form-field><br/>
-        <span>(TCEA) Tasa de coste efectiva anual</span><br/>
+        <span>(TCEA) Tasa de coste efectiva anual (%)</span><br/>
         <mat-form-field appearance="fill">
-          <mat-label>(TCEA)</mat-label>
+          <mat-label>(TCEA %) </mat-label>
           <input matInput disabled [(ngModel)]="TCEA">
         </mat-form-field><br/>
       </mat-card>
