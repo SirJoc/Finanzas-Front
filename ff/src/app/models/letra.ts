@@ -9,4 +9,7 @@ export interface Letra {
   tasa: number;
   retenciones: number;
   comentario: string;
+  t_moneda: string;
+  n_dias_anio: number;
+
 }

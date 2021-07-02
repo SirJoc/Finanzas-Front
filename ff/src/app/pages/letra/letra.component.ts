@@ -22,6 +22,14 @@ export class LetraComponent implements OnInit {
     {value: 'Efectiva', viewValue: 'Efectiva'},
     {value: 'Nominal', viewValue: 'Nominal'}
   ];
+  t_anios = [
+    {value: 360, viewValue: 360},
+    {value: 365, viewValue: 365}
+  ];
+  t_monedas = [
+    {value: 'Soles', viewValue: "S/"},
+    {value: 'Dolares', viewValue: "$"}
+  ];
   defaultLetra: Letra = {} as Letra;
 
   constructor(private datePipe: DatePipe, private letrasApi: LetrasApiService, private router: Router, private route: ActivatedRoute) { }
@@ -61,7 +69,7 @@ export class LetraComponent implements OnInit {
     const newLetra = {cliente: this.letraData.cliente, f_inicial: this.letraData.f_inicial,
       f_final: this.letraData.f_final,f_descuento: this.letraData.f_descuento, v_nominal: this.letraData.v_nominal,
       t_tasa: this.letraData.t_tasa, tasa: this.letraData.tasa/100, retenciones: this.letraData.retenciones,
-      comentario: this.letraData.comentario};
+      t_moneda: this.letraData.t_moneda, comentario: this.letraData.comentario};
     this.letrasApi.addLetra(newLetra)
       .subscribe(() => {
         this.navigateToLetras();

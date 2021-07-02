@@ -28,7 +28,9 @@
       "tasa": 0.03,
       "retenciones": "222",
       "comentarios": "",
-      "comentario": 52
+      "comentario": 52,
+      "t_moneda": "Dolares",
+      "n_dias_anio": 360
     },
     {
       "id": 2,
@@ -37,10 +39,12 @@
       "f_final": "2026-12-05",
       "f_descuento": "2023-12-25",
       "v_nominal": 1200,
-      "t_tasa": "Nominal",
+      "t_tasa": "Efectiva",
       "tasa": 0.05,
       "retenciones": 600,
-      "comentarios": ""
+      "comentarios": "",
+      "t_moneda": "Dolares",
+      "n_dias_anio": 360
     },
     {
       "id": 3,
@@ -52,7 +56,9 @@
       "t_tasa": "Nominal",
       "tasa": 0.06,
       "retenciones": 104,
-      "comentarios": ""
+      "comentarios": "",
+      "t_moneda": "Soles",
+      "n_dias_anio": 360
     }
   ],
   "students": [

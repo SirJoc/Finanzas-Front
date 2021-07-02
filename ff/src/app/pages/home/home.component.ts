@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('letraForm', { static: false }) letraForm!: NgForm;
   letraData: Letra;
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'cliente', 'f_inicial', 'f_final', 'f_descuento', 'v_nominal', 't_tasa', 'tasa', 'retenciones', 'actions'];
+  displayedColumns: string[] = ['id', 'cliente', 'f_inicial', 'f_final', 'f_descuento', 'v_nominal', 't_tasa', 'tasa', 'retenciones', 't_moneda', 'actions'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   isEditMode = false;
@@ -44,6 +44,14 @@ export class HomeComponent implements OnInit {
   t_tasas: Tasa[] = [
     {value: 'Efectiva', viewValue: 'Efectiva'},
     {value: 'Nominal', viewValue: 'Nominal'}
+  ];
+  t_monedas = [
+  {value: 'Soles', viewValue: "S/"},
+{value: 'Dolares', viewValue: "$"}
+  ];
+  t_anios = [
+    {value: 360, viewValue: 360},
+    {value: 365, viewValue: 365}
   ];
   constructor(private datePipe: DatePipe, private letrasApi: LetrasApiService, private router: Router) {
     this.letraData = {} as Letra;
@@ -82,7 +90,7 @@ export class HomeComponent implements OnInit {
     this.letraData = _.cloneDeep(element);
     this.isInfoMode = true;
     if (this.letraData.t_tasa === 'Nominal') {
-      this.TEA_SC = (Math.pow(1+(this.letraData.tasa/360), 360) -1);
+      this.TEA_SC = (Math.pow(1+(this.letraData.tasa/this.letraData.n_dias_anio), this.letraData.n_dias_anio) -1);
       var ss = this.TEA_SC.toFixed(9);
       this.TEA_SC = parseFloat(ss);
     }else {
@@ -93,7 +101,7 @@ export class HomeComponent implements OnInit {
     var f2 = moment(this.letraData.f_descuento)
     this.Numero_Dias = f1.diff(f2, 'days');
     // NO SE TOCA
-    this.Tasa_EfectD = Math.pow((1+this.TEA_SC),(this.Numero_Dias/360)) - 1;
+    this.Tasa_EfectD = Math.pow((1+this.TEA_SC),(this.Numero_Dias/this.letraData.n_dias_anio)) - 1;
     var s1 = this.Tasa_EfectD.toFixed(9);
     this.Tasa_EfectD = parseFloat(s1);
 
@@ -117,7 +125,7 @@ export class HomeComponent implements OnInit {
     this.Valor_Total_En = this.letraData.v_nominal - this.Reten;
     var l2 = this.Valor_Total_En.toFixed(2);
     this.Valor_Total_En = parseFloat(l2);
-    this.TCEA = (Math.pow((this.Valor_Total_En/this.Valor_Total_Rec), (360/this.Numero_Dias)) -1)*100;
+    this.TCEA = (Math.pow((this.Valor_Total_En/this.Valor_Total_Rec), (this.letraData.n_dias_anio/this.Numero_Dias)) -1)*100;
     var s3 = this.TCEA.toFixed(7);
     this.TCEA = parseFloat(s3);
   }
@@ -143,8 +151,8 @@ export class HomeComponent implements OnInit {
   addLetra(): void {
     const newLetra = {cliente: this.letraData.cliente, f_inicial: this.datePipe.transform(this.letraData.f_inicial, "dd-MM-yyyy" ),
       f_final: this.letraData.f_final,f_descuento: this.letraData.f_descuento, v_nominal: this.letraData.v_nominal,
-      t_tasa: this.letraData.t_tasa, tasa: this.letraData.tasa, retenciones: this.letraData.retenciones,
-      comentario: this.letraData.comentario};
+      t_tasa: this.letraData.t_tasa, tasa: this.letraData.tasa, retenciones: this.letraData.retenciones, t_moneda: this.letraData.t_moneda,
+      n_dias_anio: this.letraData.n_dias_anio, comentario: this.letraData.comentario};
 
     this.letrasApi.addLetra(newLetra).subscribe((response: any) => {
       this.dataSource.data.push({...response});

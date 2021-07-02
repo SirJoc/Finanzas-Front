@@ -50,11 +50,30 @@
         </mat-form-field>
       </p>
       <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Dias del año</mat-label>
+          <mat-select [(ngModel)]="letraData.n_dias_anio" name="nda" required>
+            <mat-option *ngFor="let nda of t_anios" [value]="nda.value">
+              {{nda.viewValue}} días
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input_right">
+          <mat-label>Tipo de moneda</mat-label>
+          <mat-select [(ngModel)]="letraData.t_moneda" name="tm" required>
+            <mat-option *ngFor="let tm of t_monedas" [value]="tm.value">
+              {{tm.viewValue}} {{tm.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
         <mat-form-field appearance="fill" style="width: 430px">
           <mat-label>Comentario</mat-label>
           <textarea matInput [(ngModel)]="letraData.comentario"></textarea>
         </mat-form-field>
       </p>
+
       <p>
         <ng-container>
           <button mat-raised-button class="mat-button-text" color="primary" style="margin-right: 15px">{{ isEditMode ? 'Update' : 'Add'}}</button>
